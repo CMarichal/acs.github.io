@@ -148,49 +148,91 @@
     <div class="container card">
         <h2>Etat</h2>
         
-        <div class="border">
-            <h3>Destinée</h3>
-            <input type="checkbox" value="{{character.destinyPoint}}">
-        </div>
-
-        <div class="border">
-            <h3>Santé</h3>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                <label class="form-check-label" for="flexRadioDefault1">
-                Normal
-                </label>
+        <div class="row">
+            <div class="col border">
+                <h3>Destinée</h3>
+                <input type="checkbox" value="{{character.destinyPoint}}">
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
-                Secoué
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                <label class="form-check-label" for="flexRadioDefault3">
-                Légèrement blessé
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                <label class="form-check-label" for="flexRadioDefault4">
-                Gravement blessé
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
-                <label class="form-check-label" for="flexRadioDefault5">
-                Mort
-                </label>
-            </div>
-        </div>
     
-        <div class="border">
-            <h3>Brume</h3>
-            <input type="range" class="form-range" min="0" max="8" step="1" id="customRange1" value="{{character.dustLevel}}">
+            <div class="col border">
+                <h3>Santé</h3>
+
+                <table class="table">
+                    <thead>
+                        <th></th>
+                        <th>Malus</th>
+                        <th>Récupération</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    Normal
+                                    </label>
+                                </div>
+                            </td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                    Secoué
+                                    </label>
+                                </div>
+                            </td>
+                            <td>-5</td>
+                            <td>5 min</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                    Légèrement blessé
+                                    </label>
+                                </div>
+                            </td>
+                            <td>-10</td>
+                            <td>1 jour / premiers soins</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                                    <label class="form-check-label" for="flexRadioDefault4">
+                                    Gravement blessé
+                                    </label>
+                                </div>
+                            </td>
+                            <td>-25</td>
+                            <td>1 semaine / chirurgie</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                                    <label class="form-check-label" for="flexRadioDefault5">
+                                    Mort
+                                    </label>
+                                </div>
+                            </td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Brume</h3>
+                <input type="range" class="form-range" min="0" max="8" step="1" id="customRange1" value="{{character.dustLevel}}">
+            </div>
+        
         </div>
+        
 
     </div>
     
@@ -258,7 +300,7 @@
     </div>
     
     <div class="container card">
-        <h2>Arbre des aptitudes</h2>
+        <h2>Aptitudes</h2>
     
     
     </div>
