@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from 'model/characterModel';
+import { testCharacter } from 'data/testCharacters';
+import { Character } from 'model/character';
 
 @Component({
   selector: 'app-character-sheet',
@@ -8,8 +9,8 @@ import { Character } from 'model/characterModel';
 })
 export class CharacterSheetComponent implements OnInit {
 
-  character: Character;
-  
+  character: Character= testCharacter;
+
   constructor() { }
 
   ngOnInit(): void {

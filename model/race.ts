@@ -2,38 +2,38 @@ export abstract class Race {
     name: string;
 }
 
-class RaceWildWalker extends Race {
+export class RaceWildWalker extends Race {
     name = "Indomptés";
 }
 
-class RaceVaulter extends Race {
+export class RaceVaulter extends Race {
     name = "Exilés";
 }
 
-class RaceBrokenLord extends Race {
+export class RaceBrokenLord extends Race {
     name = "Seigneurs Déchus";
 }
 
-class RaceRovingClan extends Race {
+export class RaceRovingClan extends Race {
     name = "Clans Errants";
 }
 
-class RaceDrakken extends Race {
+export class RaceDrakken extends Race {
     name = "Drakken";
 }
 
-class RaceKapaku extends Race {
+export class RaceKapaku extends Race {
     name = "Kapaku";
 }
 
-class RaceForgotten extends Race {
+export class RaceForgotten extends Race {
     name = "Oubliés";
 }
 
-class RaceSisterOfMercy extends Race {
+export class RaceSisterOfMercy extends Race {
     name = "Soeurs de la Miséricorde";
 }
 
-class RaceMagtay extends Race {
+export class RaceMagtay extends Race {
     name = "Magtay";
 }

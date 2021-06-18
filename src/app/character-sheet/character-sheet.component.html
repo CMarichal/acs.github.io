@@ -26,17 +26,97 @@
 <div>
     <h2>Statistiques</h2>
 
-    <h3>Vigueur</h3>
-    {{character.stats.vigor.pureValue}}
+    <div>
+        <h3>Vigueur</h3>
+        {{character.stats.vigor.pureValue}}
+        
+        <div *ngFor="let skill of character.stats.vigor.skills | keyvalue">
+            <h4>{{skill.value.name}}</h4>
+            <table>
+                <thead>
+                    <th>Base</th>
+                    <th>Modificateur</th>
+                    <th><em>Total</em></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{skill.value.baseValue}}</td>
+                        <td>{{skill.value.modifier}}</td>
+                        <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <h3>Dextérité</h3>
-    {{character.stats.dexterity.pureValue}}
+    <div>
+        <h3>Dextérité</h3>
+        {{character.stats.dexterity.pureValue}}
+        
+        <div *ngFor="let skill of character.stats.dexterity.skills | keyvalue">
+            <h4>{{skill.value.name}}</h4>
+            <table>
+                <thead>
+                    <th>Base</th>
+                    <th>Modificateur</th>
+                    <th><em>Total</em></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{skill.value.baseValue}}</td>
+                        <td>{{skill.value.modifier}}</td>
+                        <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <h3>Intelligence</h3>
-    {{character.stats.intelligence.pureValue}}
+    <div>
+        <h3>Intelligence</h3>
+        {{character.stats.intelligence.pureValue}}
+        
+        <div *ngFor="let skill of character.stats.intelligence.skills | keyvalue">
+            <h4>{{skill.value.name}}</h4>
+            <table>
+                <thead>
+                    <th>Base</th>
+                    <th>Modificateur</th>
+                    <th><em>Total</em></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{skill.value.baseValue}}</td>
+                        <td>{{skill.value.modifier}}</td>
+                        <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <h3>Charisme</h3>
-    {{character.stats.charisma.pureValue}}
+    <div>
+        <h3>Charisme</h3>
+        {{character.stats.charisma.pureValue}}
+        
+        <div *ngFor="let skill of character.stats.charisma.skills | keyvalue">
+            <h4>{{skill.value.name}}</h4>
+            <table>
+                <thead>
+                    <th>Base</th>
+                    <th>Modificateur</th>
+                    <th><em>Total</em></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{skill.value.baseValue}}</td>
+                        <td>{{skill.value.modifier}}</td>
+                        <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 
