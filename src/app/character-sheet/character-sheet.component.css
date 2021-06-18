@@ -1,0 +1,77 @@
+
+.info
+{
+    font-size: 1em;
+}
+
+.info.info__name
+{
+    font-weight: bold;
+}
+
+.info.info__race
+{
+    font-weight: bold;
+}
+
+.info.info__subgroup
+{
+    font-weight: normal;
+}
+
+.info.info__archetype
+{
+    font-style: italic;
+}
+
+.info.info__goal
+{
+    font-style: italic;
+}
+
+.characteristic.characteristic__name
+{
+    font-size: 1.8em;
+}
+
+.characteristic.characteristic__pure-value
+{
+    font-size: 1em;
+}
+
+.hexagon {
+    position: relative;
+    width: 40px; 
+    height: 23.09px;
+    background-color: #ffffff;
+    margin: 11.55px 0;
+    border-left: solid 3px #333333;
+    border-right: solid 3px #333333;
+    text-align: center;
+  }
+  
+  .hexagon:before,
+  .hexagon:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 28.28px;
+    height: 28.28px;
+    -webkit-transform: scaleY(0.5774) rotate(-45deg);
+    -ms-transform: scaleY(0.5774) rotate(-45deg);
+    transform: scaleY(0.5774) rotate(-45deg);
+    background: none;
+    left: 2.8579px;
+  }
+  
+  .hexagon:before {
+    top: -14.1421px;
+    border-top: solid 4.2426px #333333;
+    border-right: solid 4.2426px #333333;
+  }
+  
+  .hexagon:after {
+    bottom: -14.1421px;
+    border-bottom: solid 4.2426px #333333;
+    border-left: solid 4.2426px #333333;
+  }
