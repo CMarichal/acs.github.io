@@ -1,0 +1,80 @@
+<h1>Fiche personnage</h1>
+
+<div>
+    <h2>Informations</h2>
+
+    <h3>Nom</h3>
+    <div>
+        <label for="name">Name</label>
+        <input id="name" [(ngModel)]="character.name" placeholder="name">
+      </div>
+
+    <h3>Race</h3>
+    {{character.race.name}}
+
+    <h3>Sous-faction</h3>
+    {{character.subgroup}}
+
+    <h3>Archétype</h3>
+    {{character.archetype}}
+
+    <h3>But</h3>
+    {{character.goal}}
+
+</div>
+
+<div>
+    <h2>Statistiques</h2>
+
+    <h3>Vigueur</h3>
+    {{character.stats.vigor.pureValue}}
+
+    <h3>Dextérité</h3>
+    {{character.stats.dexterity.pureValue}}
+
+    <h3>Intelligence</h3>
+    {{character.stats.intelligence.pureValue}}
+
+    <h3>Charisme</h3>
+    {{character.stats.charisma.pureValue}}
+</div>
+
+
+<div>
+    <h2>Etat</h2>
+    
+    <h3>Destinée</h3>
+    {{character.destinyPoint}}
+
+    <h3>Santé</h3>
+    {{character.healthStatus}}
+
+    <h3>Brume</h3>
+    {{character.dustLevel}}
+</div>
+
+
+<div>
+    <h2>Equipement</h2>
+
+    <h3>Armes</h3>
+    <li *ngFor="let weapon of character.weapons"></li>
+
+    <h3>Armures</h3>
+    <li *ngFor="let armor of character.armor"></li>
+
+    <h3>Inventaire</h3>
+    <li *ngFor="let object of character.inventory"></li>
+</div>
+
+<div>
+    <h2>Capacités</h2>
+
+
+</div>
+
+<div>
+    <h2>Arbre des aptitudes</h2>
+
+
+</div>
