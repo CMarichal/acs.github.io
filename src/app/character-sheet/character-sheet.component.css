@@ -1,4 +1,10 @@
 
+h1.sheet-title
+{
+    font-size: 2.5em;
+    display: inline;
+}
+
 .info
 {
     font-size: 1em;
@@ -39,6 +45,7 @@
     font-size: 1em;
 }
 
+
 .hexagon {
     position: relative;
     width: 40px; 
@@ -75,3 +82,17 @@
     border-bottom: solid 4.2426px #333333;
     border-left: solid 4.2426px #333333;
   }
+
+  
+  .pure-value-input
+  {
+      border-radius: 0.1em;
+      width: 3.5em;
+      transform: translateX(100);
+  }
+
+.skill-input
+{
+    border-radius: 0.1em;
+    width: 3.5em;
+}

@@ -1,7 +1,11 @@
 
 <div class="container card">
     <div class="card-header">
-        <h1>Fiche personnage</h1>
+        <h1 class="sheet-title">Fiche personnage</h1>
+            <button *ngIf="!editMode; else elseEditButton" class="btn btn-secondary float-right" (click)="onClickEditButton()">Modifier</button>
+        <ng-template #elseEditButton>
+            <button class="btn btn-primary float-right" (click)="onClickEditButton()">Sauvegarder</button>
+        </ng-template>
     </div>
     
 
@@ -10,28 +14,59 @@
         
         <div>
             <span class="info info__name">Nom </span>
-            <label for="name"></label>
-            <input id="name" [(ngModel)]="character.name" placeholder="name">
+            <span *ngIf="!editMode; else elseBlockName">
+                {{character.name}}
+            </span>
+            <ng-template #elseBlockName>
+                <label for="name"></label>
+                <input id="name" [(ngModel)]="character.name">
+            </ng-template>
         </div>
 
         <p>
-            <span class="info info__race">Race</span>
-            {{character.race.name}}
+            <span class="info info__race">Race </span>
+            <span *ngIf="!editMode; else elseBlockRace">
+                {{character.race.name}}
+            </span>
+            <ng-template #elseBlockRace>
+                <label for="race"></label>
+                <select name="race" [(ngModel)]="character.race.name" id="race">
+                    <option *ngFor="let race of racesList" value={{race.name}}>{{race.name}}</option>
+                </select>
+            </ng-template>
         </p>
         
         <p>
             <span class="info info__subgroup">Sous-faction</span>
-            {{character.subgroup}}
+            <span *ngIf="!editMode; else elseBlockSubgroup">
+                {{character.subgroup}}
+            </span>
+            <ng-template #elseBlockSubgroup>
+                <label for="subgroup"></label>
+                <input id="subgroup" [(ngModel)]="character.subgroup">
+            </ng-template>
         </p>
     
         <p>
             <span class="info info__archetype">Archétype</span>
-            {{character.archetype}}
+            <span *ngIf="!editMode; else elseBlockArchetype">
+                {{character.archetype}}
+            </span>
+            <ng-template #elseBlockArchetype>
+                <label for="archetype"></label>
+                <input id="archetype" [(ngModel)]="character.archetype">
+            </ng-template>
         </p>
     
         <p>
             <span class="info info__goal">But</span>
-            {{character.goal}}
+            <span *ngIf="!editMode; else elseBlockGoal">
+                {{character.goal}}
+            </span>
+            <ng-template #elseBlockGoal>
+                <label for="goal"></label>
+                <input id="goal" [(ngModel)]="character.goal">
+            </ng-template>
         </p>
     </div>
 
@@ -41,8 +76,16 @@
             <div class="col-md border">
                 <div>
                     <span class="characteristic characteristic__name">Vigueur</span>
-                    <div class="hexagon float-right">
-                        <span class="characteristic characteristic__pure-value">{{character.stats.vigor.pureValue}}</span>
+                    <div class="float-right">
+                        <div *ngIf="!editMode; else elseBlockPureValueVigor" >
+                            <div class="hexagon">
+                                <span class="characteristic characteristic__pure-value">{{character.stats.vigor.pureValue}}</span>
+                            </div>
+                        </div>
+                        <ng-template #elseBlockPureValueVigor>
+                                <label for="vigor-pure-value"></label>
+                                <input class="pure-value-input" id="vigor-pure-value" type="number" [(ngModel)]="character.stats.vigor.pureValue">
+                        </ng-template>
                     </div>
                 </div>
                 <table class="col table">
@@ -55,7 +98,15 @@
                     <tbody>
                         <tr *ngFor="let skill of character.stats.vigor.skills | keyvalue">
                             <td>{{skill.value.name}}</td>
-                            <td>{{skill.value.baseValue}}</td>
+                            <td>
+                                <span *ngIf="!editMode; else elseBlockSkill">
+                                    {{skill.value.baseValue}}
+                                </span>
+                                <ng-template #elseBlockSkill>
+                                    <label for="{{skill.value.name}}"></label>
+                                    <input class="skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                </ng-template>
+                            </td>
                             <td>{{skill.value.modifier}}</td>
                             <td>{{skill.value.baseValue + skill.value.modifier}}</td>
                         </tr>
@@ -66,11 +117,18 @@
             <div class="col-md border">
                 <div>
                     <span class="characteristic characteristic__name">Dextérité</span>
-                    <div class="hexagon float-right">
-                        <span class="characteristic characteristic__pure-value">{{character.stats.dexterity.pureValue}}</span>
+                    <div class="float-right">
+                        <div *ngIf="!editMode; else elseBlockPureValueDexterity" >
+                            <div class="hexagon">
+                                <span class="characteristic characteristic__pure-value">{{character.stats.dexterity.pureValue}}</span>
+                            </div>
+                        </div>
+                        <ng-template #elseBlockPureValueDexterity>
+                                <label for="dexterity-pure-value"></label>
+                                <input class="pure-value-input" id="dexterity-pure-value" type="number" [(ngModel)]="character.stats.dexterity.pureValue">
+                        </ng-template>
                     </div>
                 </div>
-                
                 <table class="col table">
                     <thead>
                         <th></th>
@@ -81,7 +139,15 @@
                     <tbody>
                         <tr *ngFor="let skill of character.stats.dexterity.skills | keyvalue">
                             <td>{{skill.value.name}}</td>
-                            <td>{{skill.value.baseValue}}</td>
+                            <td>
+                                <span *ngIf="!editMode; else elseBlockSkill">
+                                    {{skill.value.baseValue}}
+                                </span>
+                                <ng-template #elseBlockSkill>
+                                    <label for="{{skill.value.name}}"></label>
+                                    <input class="skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                </ng-template>
+                            </td>
                             <td>{{skill.value.modifier}}</td>
                             <td>{{skill.value.baseValue + skill.value.modifier}}</td>
                         </tr>
@@ -92,8 +158,16 @@
             <div class="col-md border">
                 <div>
                     <span class="characteristic characteristic__name">Intelligence</span>
-                    <div class="hexagon float-right">
-                        <span class="characteristic characteristic__pure-value">{{character.stats.intelligence.pureValue}}</span>
+                    <div class="float-right">
+                        <div *ngIf="!editMode; else elseBlockPureValueIntelligence" >
+                            <div class="hexagon">
+                                <span class="characteristic characteristic__pure-value">{{character.stats.intelligence.pureValue}}</span>
+                            </div>
+                        </div>
+                        <ng-template #elseBlockPureValueIntelligence>
+                                <label for="intelligence-pure-value"></label>
+                                <input class="pure-value-input" id="intelligence-pure-value" type="number" [(ngModel)]="character.stats.intelligence.pureValue">
+                        </ng-template>
                     </div>
                 </div>
                 
@@ -107,7 +181,15 @@
                     <tbody>
                         <tr *ngFor="let skill of character.stats.intelligence.skills | keyvalue">
                             <td>{{skill.value.name}}</td>
-                            <td>{{skill.value.baseValue}}</td>
+                            <td>
+                                <span *ngIf="!editMode; else elseBlockSkill">
+                                    {{skill.value.baseValue}}
+                                </span>
+                                <ng-template #elseBlockSkill>
+                                    <label for="{{skill.value.name}}"></label>
+                                    <input class=" skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                </ng-template>
+                            </td>
                             <td>{{skill.value.modifier}}</td>
                             <td>{{skill.value.baseValue + skill.value.modifier}}</td>
                         </tr>
@@ -118,8 +200,16 @@
             <div class="col-md border">
                 <div>
                     <span class="characteristic characteristic__name">Charisme</span>
-                    <div class="hexagon float-right">
-                        <span class="characteristic characteristic__pure-value">{{character.stats.charisma.pureValue}}</span>
+                    <div class="float-right">
+                        <div *ngIf="!editMode; else elseBlockPureValueCharisma" >
+                            <div class="hexagon">
+                                <span class="characteristic characteristic__pure-value">{{character.stats.charisma.pureValue}}</span>
+                            </div>
+                        </div>
+                        <ng-template #elseBlockPureValueCharisma>
+                                <label for="charisma-pure-value"></label>
+                                <input class="pure-value-input" id="charisma-pure-value" type="number" [(ngModel)]="character.stats.charisma.pureValue">
+                        </ng-template>
                     </div>
                 </div>
                 
@@ -133,7 +223,15 @@
                     <tbody>
                         <tr *ngFor="let skill of character.stats.charisma.skills | keyvalue">
                             <td>{{skill.value.name}}</td>
-                            <td>{{skill.value.baseValue}}</td>
+                            <td>
+                                <span *ngIf="!editMode; else elseBlockSkill">
+                                    {{skill.value.baseValue}}
+                                </span>
+                                <ng-template #elseBlockSkill>
+                                    <label for="{{skill.value.name}}"></label>
+                                    <input class=" skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                </ng-template>
+                            </td>
                             <td>{{skill.value.modifier}}</td>
                             <td>{{skill.value.baseValue + skill.value.modifier}}</td>
                         </tr>

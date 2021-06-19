@@ -37,3 +37,15 @@ export class RaceSisterOfMercy extends Race {
 export class RaceMagtay extends Race {
     name = "Magtay";
 }
+
+export const RacesList: Race[] = [
+    new RaceWildWalker(),
+    new RaceBrokenLord(),
+    new RaceForgotten(),
+    new RaceDrakken(),
+    new RaceKapaku(),
+    new RaceMagtay(),
+    new RaceRovingClan(),
+    new RaceSisterOfMercy(),
+    new RaceVaulter()
+]
