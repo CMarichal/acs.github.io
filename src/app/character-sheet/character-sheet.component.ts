@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { testCharacter } from 'data/testCharacters';
 import { Character } from 'model/character';
 import { Race, RacesList } from 'model/race';
+import { CharacterSheetManagementService } from '../services/character-sheet-management.service';
 
 @Component({
   selector: 'app-character-sheet',
@@ -15,7 +16,9 @@ export class CharacterSheetComponent implements OnInit {
 
   editMode: boolean = false;
 
-  constructor() { }
+  constructor(
+    private characterSheetManagementService: CharacterSheetManagementService
+  ) {  }
 
   ngOnInit(): void {
   }
@@ -27,14 +30,15 @@ export class CharacterSheetComponent implements OnInit {
     }
     else
     {
-      this.saveCharacter();
+      this.characterSheetManagementService.saveCharacter(this.character);
       this.editMode = false;
     }
     
   }
 
-  saveCharacter() {
-
+  onClickDownloadButton()
+  {
+    this.characterSheetManagementService.exportCharacterSheet(this.character);
   }
 
 }
