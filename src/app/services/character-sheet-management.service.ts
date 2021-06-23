@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { testCharacters } from 'data/testCharacters';
 import { Character } from 'model/character';
+import {Router} from "@angular/router"
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +11,15 @@ export class CharacterSheetManagementService {
 
   characterSheets: Character[] = testCharacters;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   getAllCharacterSheets() {
     return this.characterSheets;
   }
 
-  importCharacterSheet(file) {
-    
+  importCharacterSheet(character: Character) {
+    this.characterSheets.push(character);
+    this.router.navigate(['character-sheet', character.id]);
   }
 
   exportCharacterSheet(character: Character) {
