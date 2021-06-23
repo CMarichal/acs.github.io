@@ -18,6 +18,8 @@ export class CharacterSheetComponent implements OnInit {
   
   editMode: boolean = false;
 
+  urlDownload;
+
   constructor(
     private characterSheetManagementService: CharacterSheetManagementService,
     private rulesService: RulesService,
@@ -47,7 +49,7 @@ export class CharacterSheetComponent implements OnInit {
 
   onClickDownloadButton()
   {
-    this.characterSheetManagementService.exportCharacterSheet(this.character);
+    this.urlDownload = this.characterSheetManagementService.exportCharacterSheet(this.character);
   }
 
 }
