@@ -21,15 +21,10 @@ export class HomeComponent implements OnInit {
   onChange(event) {
     this.uploadedFile = event.target.files[0];
   }
-  b(){
-    
-  }
 
   onClickImportButton() {
-    //import something
-    console.log("uplad");
     if (this.uploadedFile.type !== "application/json") {
-      alert("Wrong file type == " + this.uploadedFile.type); 
+      alert("Wrong file type: " + this.uploadedFile.type); 
       return false;
     }
     if (this.uploadedFile) {
@@ -41,7 +36,6 @@ export class HomeComponent implements OnInit {
           };
           readFile.readAsText(this.uploadedFile);
       }
-    
   }
 
 
