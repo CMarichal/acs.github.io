@@ -1,0 +1,15 @@
+
+.home-menu
+{
+    width: 100%;
+    max-width: 20em;
+    margin: auto;
+    padding: auto;
+    padding-top: 27%;
+    padding-bottom: 27%;
+    padding-left: 2em;
+    padding-right: 2em;
+
+
+    background-color: white;
+}

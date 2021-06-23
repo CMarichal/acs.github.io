@@ -1,1 +1,17 @@
-<p>home works!</p>
+
+
+    <div class="container home-menu">
+        <div class="row">
+            <div clss="col-4 d-flex justify-content-center">
+                <img src="/assets/acs-logo.jpg" width="50" height="50" alt="acs-logo">
+            </div>
+            
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" (onClick)="onClickImportButton()">Importer un personnage</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary" [routerLink]="['/character-sheet/', 0]" routerLinkActive="active">Perso 1</button>
+        </div>
+    </div>
+

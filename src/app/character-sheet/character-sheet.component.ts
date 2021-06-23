@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { testCharacter } from 'data/testCharacters';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Character } from 'model/character';
-import { Race, RacesList } from 'model/race';
+import { Race } from 'model/race';
 import { CharacterSheetManagementService } from '../services/character-sheet-management.service';
+import { RulesService } from '../services/rules.service';
 
 @Component({
   selector: 'app-character-sheet',
@@ -11,16 +12,24 @@ import { CharacterSheetManagementService } from '../services/character-sheet-man
 })
 export class CharacterSheetComponent implements OnInit {
 
-  racesList: Race[] = RacesList;
-  character: Character= testCharacter;
+  character: Character; // character to display
 
+  racesList: Race[]; //used in the dropdown menu
+  
   editMode: boolean = false;
 
   constructor(
-    private characterSheetManagementService: CharacterSheetManagementService
-  ) {  }
+    private characterSheetManagementService: CharacterSheetManagementService,
+    private rulesService: RulesService,
+    private route: ActivatedRoute
+  ) {   }
 
   ngOnInit(): void {
+    var characterId = this.route.snapshot.params.id;
+
+    this.character = this.characterSheetManagementService.getCharacterSheet(characterId);
+
+    this.racesList = this.rulesService.getRacesList();
   }
 
   onClickEditButton()  {

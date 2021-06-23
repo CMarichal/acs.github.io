@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { testCharacters } from 'data/testCharacters';
 import { Character } from 'model/character';
 
 @Injectable({
@@ -6,7 +7,7 @@ import { Character } from 'model/character';
 })
 export class CharacterSheetManagementService {
 
-  characterSheets: Character[] = [];
+  characterSheets: Character[] = testCharacters;
 
   constructor() { }
 
@@ -22,7 +23,8 @@ export class CharacterSheetManagementService {
   }
 
   getCharacterSheet(id: number) {
-    return this.characterSheets.find(sheet => id==sheet.id);
+    var character= this.characterSheets.find(sheet => sheet.id==id);
+    return character;
   }
 
   saveCharacter(character: Character) {

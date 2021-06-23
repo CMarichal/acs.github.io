@@ -1,5 +1,6 @@
 import { Race } from "./race";
 import { Job } from "./job";
+import { ItemManagement } from "./item";
 
 
 class Skill {
@@ -56,7 +57,7 @@ class Stats {
     }
 }
 
-enum HealthStatus {
+export enum HealthStatus {
     NORMAL,
     DIZZY,
     SLIGHTLY_HARMED,
@@ -90,9 +91,9 @@ export class Character {
 
     dustLevel: number=1;
 
-    weapons: {[name: string]: string};
-    armor: {[name: string]: string};
-    inventory: {[name: string]: string};
+    weapons: ItemManagement.Weapon[];
+    armor: ItemManagement.Armor[];
+    inventory: ItemManagement.Item[];
 
     capacities: Capacity[];
 
