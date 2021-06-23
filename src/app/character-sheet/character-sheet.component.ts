@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Character } from 'model/character';
+import { HealthStatusList } from 'model/healthStatus';
 import { Race } from 'model/race';
 import { CharacterSheetManagementService } from '../services/character-sheet-management.service';
 import { RulesService } from '../services/rules.service';
@@ -13,12 +14,13 @@ import { RulesService } from '../services/rules.service';
 export class CharacterSheetComponent implements OnInit {
 
   character: Character; // character to display
+  
 
   racesList: Race[]; //used in the dropdown menu
+
+  healthStatusList = HealthStatusList;
   
   editMode: boolean = false;
-
-  urlDownload;
 
   constructor(
     private characterSheetManagementService: CharacterSheetManagementService,
@@ -49,7 +51,8 @@ export class CharacterSheetComponent implements OnInit {
 
   onClickDownloadButton()
   {
-    this.urlDownload = this.characterSheetManagementService.exportCharacterSheet(this.character);
+    this.characterSheetManagementService.exportCharacterSheet(this.character);
   }
+
 
 }

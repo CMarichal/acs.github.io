@@ -27,12 +27,12 @@
         <p>
             <span class="info info__race">Race </span>
             <span *ngIf="!editMode; else elseBlockRace">
-                {{character.race.name}}
+                {{character.race.designation}}
             </span>
             <ng-template #elseBlockRace>
                 <label for="race"></label>
-                <select name="race" [(ngModel)]="character.race.name" id="race">
-                    <option *ngFor="let race of racesList" value={{race.name}}>{{race.name}}</option>
+                <select name="race" [(ngModel)]="character.race" id="race">
+                    <option *ngFor="let race of racesList" value={{race.designation}}>{{race.designation}}</option>
                 </select>
             </ng-template>
         </p>
@@ -97,19 +97,19 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.vigor.skills | keyvalue">
-                            <td>{{skill.value.name}}</td>
+                        <tr *ngFor="let skill of character.stats.vigor.getSkills()">
+                            <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
-                                    {{skill.value.baseValue}}
+                                    {{skill.baseValue}}
                                 </span>
                                 <ng-template #elseBlockSkill>
-                                    <label for="{{skill.value.name}}"></label>
-                                    <input class="skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                    <label for="{{skill.name}}"></label>
+                                    <input class="skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.value.modifier}}</td>
-                            <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                            <td>{{skill.modifier}}</td>
+                            <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -138,19 +138,19 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.dexterity.skills | keyvalue">
-                            <td>{{skill.value.name}}</td>
+                        <tr *ngFor="let skill of character.stats.dexterity.getSkills()">
+                            <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
-                                    {{skill.value.baseValue}}
+                                    {{skill.baseValue}}
                                 </span>
                                 <ng-template #elseBlockSkill>
-                                    <label for="{{skill.value.name}}"></label>
-                                    <input class="skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                    <label for="{{skill.name}}"></label>
+                                    <input class="skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.value.modifier}}</td>
-                            <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                            <td>{{skill.modifier}}</td>
+                            <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -180,19 +180,19 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.intelligence.skills | keyvalue">
-                            <td>{{skill.value.name}}</td>
+                        <tr *ngFor="let skill of character.stats.intelligence.getSkills()">
+                            <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
-                                    {{skill.value.baseValue}}
+                                    {{skill.baseValue}}
                                 </span>
                                 <ng-template #elseBlockSkill>
-                                    <label for="{{skill.value.name}}"></label>
-                                    <input class=" skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                    <label for="{{skill.name}}"></label>
+                                    <input class=" skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.value.modifier}}</td>
-                            <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                            <td>{{skill.modifier}}</td>
+                            <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -222,19 +222,19 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.charisma.skills | keyvalue">
-                            <td>{{skill.value.name}}</td>
+                        <tr *ngFor="let skill of character.stats.charisma.getSkills()">
+                            <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
-                                    {{skill.value.baseValue}}
+                                    {{skill.baseValue}}
                                 </span>
                                 <ng-template #elseBlockSkill>
-                                    <label for="{{skill.value.name}}"></label>
-                                    <input class=" skill-input" id="{{skill.value.name}}" type="number" [(ngModel)]="skill.value.baseValue">
+                                    <label for="{{skill.name}}"></label>
+                                    <input class=" skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.value.modifier}}</td>
-                            <td>{{skill.value.baseValue + skill.value.modifier}}</td>
+                            <td>{{skill.modifier}}</td>
+                            <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -263,71 +263,25 @@
                         <th>Récupération</th>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let healthStatus of healthStatusList">
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                    Normal
+                                    <input class="form-check-input" type="radio" name="healthRadioGroup" id="healthRadioGroup1" 
+                                        value="{{healthStatus}}" [(ngModel)]="character.healthStatus">
+                                    <label class="form-check-label" for="healthRadioGroup1">
+                                    {{healthStatus.description}}
                                     </label>
                                 </div>
                             </td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                    Secoué
-                                    </label>
-                                </div>
-                            </td>
-                            <td>-5</td>
-                            <td>5 min</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                    <label class="form-check-label" for="flexRadioDefault3">
-                                    Légèrement blessé
-                                    </label>
-                                </div>
-                            </td>
-                            <td>-10</td>
-                            <td>1 jour / premiers soins</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                                    <label class="form-check-label" for="flexRadioDefault4">
-                                    Gravement blessé
-                                    </label>
-                                </div>
-                            </td>
-                            <td>-25</td>
-                            <td>1 semaine / chirurgie</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
-                                    <label class="form-check-label" for="flexRadioDefault5">
-                                    Mort
-                                    </label>
-                                </div>
-                            </td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{healthStatus.malus}}</td>
+                            <td>{{healthStatus.recovery}}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h3>Brume</h3>
-                <input type="range" class="form-range" min="0" max="8" step="1" id="customRange1" value="{{character.dustLevel}}">
+                <input type="range" class="form-range" min="0" max="8" step="1" id="customRange1" [(ngModel)]="character.dustLevel">
+                {{character.dustLevel}}/8
             </div>
         
         </div>

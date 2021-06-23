@@ -1,19 +1,20 @@
 export abstract class Job {
-    name: string;
+    static designation: string;
+    get designation() {return Job.designation;}
 }
 
-export class JobRanged extends Job {
-    name = "A distance";
+export abstract class JobRanged extends Job {
+    static designation = "A distance";
 }
 
-export class JobMelee extends Job {
-    name = "Combattant";
+export abstract class JobMelee extends Job {
+    static designation = "Combattant";
 }
 
-export class JobSupport extends Job {
-    name = "Soutien";
+export abstract class JobSupport extends Job {
+    static designation = "Soutien";
 }
 
-export class JobCavalry extends Job {
-    name = "Monté";
+export abstract class JobCavalry extends Job {
+    static designation = "Monté";
 }

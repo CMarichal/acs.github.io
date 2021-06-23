@@ -1,51 +1,53 @@
 export abstract class Race {
-    name: string;
+    static designation: string;
+
+    get designation() {return Race.designation};
 }
 
-export class RaceWildWalker extends Race {
-    name = "Indomptés";
+export abstract class RaceWildWalker extends Race {
+    static designation = "Indomptés";
 }
 
-export class RaceVaulter extends Race {
-    name = "Exilés";
+export abstract class RaceVaulter extends Race {
+    static designation = "Exilés";
 }
 
-export class RaceBrokenLord extends Race {
-    name = "Seigneurs Déchus";
+export abstract class RaceBrokenLord extends Race {
+    static designation = "Seigneurs Déchus";
 }
 
-export class RaceRovingClan extends Race {
-    name = "Clans Errants";
+export abstract class RaceRovingClan extends Race {
+    static designation = "Clans Errants";
 }
 
-export class RaceDrakken extends Race {
-    name = "Drakken";
+export abstract class RaceDrakken extends Race {
+    static designation = "Drakken";
 }
 
-export class RaceKapaku extends Race {
-    name = "Kapaku";
+export abstract class RaceKapaku extends Race {
+    static designation = "Kapaku";
 }
 
-export class RaceForgotten extends Race {
-    name = "Oubliés";
+export abstract class RaceForgotten extends Race {
+    static designation = "Oubliés";
 }
 
-export class RaceSisterOfMercy extends Race {
-    name = "Soeurs de la Miséricorde";
+export abstract class RaceSisterOfMercy extends Race {
+    static designation = "Soeurs de la Miséricorde";
 }
 
-export class RaceMagtay extends Race {
-    name = "Magtay";
+export abstract class RaceMagtay extends Race {
+    static designation = "Magtay";
 }
 
 export const RacesList: Race[] = [
-    new RaceWildWalker(),
-    new RaceBrokenLord(),
-    new RaceForgotten(),
-    new RaceDrakken(),
-    new RaceKapaku(),
-    new RaceMagtay(),
-    new RaceRovingClan(),
-    new RaceSisterOfMercy(),
-    new RaceVaulter()
+    RaceWildWalker,
+    RaceBrokenLord,
+    RaceForgotten,
+    RaceDrakken,
+    RaceKapaku,
+    RaceMagtay,
+    RaceRovingClan,
+    RaceSisterOfMercy,
+    RaceVaulter
 ]
