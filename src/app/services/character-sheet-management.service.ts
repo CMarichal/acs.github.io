@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { testCharacters } from 'data/testCharacters';
 import { Character } from 'model/character';
 import {Router} from "@angular/router"
+import { Races } from 'model/race';
+import { Jobs } from 'model/job';
 
 
 @Injectable({
@@ -15,6 +17,12 @@ export class CharacterSheetManagementService {
 
   getAllCharacterSheets() {
     return this.characterSheets;
+  }
+
+  createCharacter() {
+    var newCharacter = new Character("", Races.RACE_VAULTERS, Jobs.JOB_MELEE);
+    this.characterSheets.push(newCharacter);
+    this.router.navigate(['character-sheet', newCharacter.id]);
   }
 
   importCharacterSheet(character: Character) {

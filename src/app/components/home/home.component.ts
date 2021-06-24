@@ -38,5 +38,9 @@ export class HomeComponent implements OnInit {
       }
   }
 
+  onClickCreateButton() {
+    this.characterSheetManagementService.createCharacter();
+  }
+
 
 }

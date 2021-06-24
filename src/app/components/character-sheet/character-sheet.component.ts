@@ -65,13 +65,13 @@ export class CharacterSheetComponent implements OnInit {
 
   onClickAddWeapon() {
     var newWeapon = new ItemManagement.Weapon();
-    newWeapon.id = this.character.armor.length;
-    this.character.weapons.push();
+    newWeapon.id = this.character.weapons.length;
+    this.character.weapons.push(newWeapon);
   }
 
   onClickAddArmor() {
     var newArmor = new ItemManagement.Armor();
-    newArmor.id = this.character.weapons.length;
+    newArmor.id = this.character.armor.length;
     this.character.armor.push(newArmor);
   }
 

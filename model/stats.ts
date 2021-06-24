@@ -126,8 +126,8 @@ class CategoryIntelligence extends Category {
     knowHow: SkillKnowHow           = new SkillKnowHow();
     key="INT";
 
-    knowledges: {[name: string]: Skill};
-    knowHows: {[name: string]: Skill};
+    knowledges: {[name: string]: Skill} = {};
+    knowHows: {[name: string]: Skill} = {};
 
     getSkills() {
         return [this.knowledge].concat(Object.values(this.knowledges))

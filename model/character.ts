@@ -13,7 +13,7 @@ class Capacity {
 
 export class Character {
     
-    id: number=-1;
+    id: number=1;
 
     name: string="";
     race: Race;
@@ -31,11 +31,11 @@ export class Character {
 
     dustLevel: number=1;
 
-    weapons: ItemManagement.Weapon[];
-    armor: ItemManagement.Armor[];
-    inventory: ItemManagement.Item[];
+    weapons: ItemManagement.Weapon[] = [];
+    armor: ItemManagement.Armor[] = [];
+    inventory: ItemManagement.Item[] = [];
 
-    capacities: Capacity[];
+    capacities: Capacity[] = [];
 
     constructor(
         name: string, 
