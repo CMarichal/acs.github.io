@@ -9,7 +9,7 @@ export namespace ItemManagement {
         statModifiers: SimpleStats = {};
     }
     
-    abstract class Material {
+    export abstract class Material {
         name: string;
         modifier: number;
     }
@@ -30,6 +30,7 @@ export namespace ItemManagement {
     abstract class Equipement extends Item {
         type: string="";
         material: Material = MaterialCommons.MATERIAL_UNKNOWN;
+        equiped: boolean = false;
     }
     
     export class Weapon extends Equipement {

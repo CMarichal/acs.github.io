@@ -3,6 +3,7 @@ import { Race, Races } from 'model/race';
 import { Job, Jobs } from 'model/job';
 import { Character } from 'model/character';
 import { Stats, SimpleStats } from 'model/stats';
+import { MaterialCommons } from 'data/materialsBDD';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class RulesService {
 
   racesList = Races.RacesList;
   jobsList = Jobs.JobList;
+  materialList = MaterialCommons.MaterialList;
 
   constructor() { }
 
@@ -21,6 +23,10 @@ export class RulesService {
   getJobsList()
   {
     return this.jobsList;
+  }
+  getMaterialsList()
+  {
+    return this.materialList;
   }
 
   updateModifiers(character: Character) {

@@ -19,6 +19,7 @@ export class CharacterSheetComponent implements OnInit {
   
   racesList: Race[]; //used in the dropdown menu
   jobsList: Job[];
+  materialList: ItemManagement.Material[];
 
   healthStatusList = HealthStatuses.HealthStatusesList;
   
@@ -37,6 +38,7 @@ export class CharacterSheetComponent implements OnInit {
 
     this.racesList = this.rulesService.getRacesList();
     this.jobsList = this.rulesService.getJobsList();
+    this.materialList = this.rulesService.getMaterialsList();
   }
 
   onClickEditButton()  {

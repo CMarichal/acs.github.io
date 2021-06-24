@@ -391,6 +391,7 @@
         <h3>Armes</h3>
         <table class="table table-striped">
             <thead>
+                <th></th>
                 <th>Nom</th>
                 <th>Type</th>
                 <th>Matériau</th>
@@ -401,6 +402,11 @@
             </thead>
             <tbody>
                 <tr *ngFor="let weapon of character.weapons">
+                    <td>
+                        <input class="form-check-input" type="radio" name="healthRadioGroup" id="weaponEquipped+{{weapon.id}}" 
+                        [value]="weapon.id" [checked]="weapon.equiped">
+                        
+                    </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockWeaponName">
                             {{weapon.name}}
@@ -420,7 +426,15 @@
                         </ng-template>
                      </td>
                     <td>
-                        {{weapon.material.name}}
+                        <span *ngIf="!editMode; else elseBlockWeaponMaterial">
+                            {{weapon.material.name}}
+                        </span>
+                        <ng-template #elseBlockWeaponMaterial>
+                            <label for="weapon{{weapon.id}}material"></label>
+                            <select name="weapon{{weapon.id}}material" [(ngModel)]="weapon.material" id="race">
+                                <option *ngFor="let material of materialList" [ngValue]="material">{{material.name}}</option>
+                            </select>
+                        </ng-template>
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockWeaponEffects">
@@ -439,6 +453,7 @@
         <h3>Armures</h3>
         <table class="table table-striped">
             <thead>
+                <th></th>
                 <th>Nom</th>
                 <th>Type</th>
                 <th>Matériau</th>
@@ -449,6 +464,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let armor of character.armor">
+                    <td>
+                        <input type="checkbox" [checked]="armor.equiped">
+                    </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockArmorName">
                             {{armor.name}}
@@ -468,7 +486,15 @@
                         </ng-template>
                      </td>
                     <td>
-                        {{armor.material.name}}
+                        <span *ngIf="!editMode; else elseBlockArmorMaterial">
+                            {{armor.material.name}}
+                        </span>
+                        <ng-template #elseBlockArmorMaterial>
+                            <label for="armor{{armor.id}}material"></label>
+                            <select name="armor{{armor.id}}material" [(ngModel)]="armor.material" id="race">
+                                <option *ngFor="let material of materialList" [ngValue]="material">{{material.name}}</option>
+                            </select>
+                        </ng-template>
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockArmorEffects">
