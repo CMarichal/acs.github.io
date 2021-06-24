@@ -105,7 +105,11 @@ export const testCharacters: Character[] = [
                     }
                 },
                 getSkills() {
-                    return [this.knowledge, this.perception, this.preparation, this.knowHow];
+                    return [this.knowledge].concat(Object.values(this.knowledges))
+                    .concat(this.perception)
+                    .concat(this.preparation)
+                    .concat(this.knowHow)
+                    .concat(Object.values(this.knowHows));
                 }
             },
             charisma: {

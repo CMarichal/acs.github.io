@@ -1,3 +1,4 @@
+import { concat } from "rxjs";
 
 class Skill {
     name: string;
@@ -48,7 +49,11 @@ class CategoryIntelligence extends Category {
     knowHows: {[name: string]: Skill};
 
     getSkills() {
-        return [this.knowledge, this.perception, this.preparation, this.knowHow];
+        return [this.knowledge].concat(Object.values(this.knowledges))
+                                .concat(this.perception)
+                                .concat(this.preparation)
+                                .concat(this.knowHow)
+                                .concat(Object.values(this.knowHows));
     }
 }
 

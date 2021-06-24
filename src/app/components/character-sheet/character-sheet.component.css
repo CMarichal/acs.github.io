@@ -55,7 +55,10 @@ h1.sheet-title
     color: red;
 }
 
-
+.subskill
+{
+    font-style: italic;
+}
 
 .hexagon {
     position: relative;
