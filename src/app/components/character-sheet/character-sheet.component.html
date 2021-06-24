@@ -12,63 +12,96 @@
     
     <div class="container border">
         <h2>Informations</h2>
-        
-        <div>
-            <span class="info info__name">Nom </span>
-            <span *ngIf="!editMode; else elseBlockName">
-                {{character.name}}
-            </span>
-            <ng-template #elseBlockName>
-                <label for="name"></label>
-                <input id="name" [(ngModel)]="character.name">
-            </ng-template>
-        </div>
-
-        <p>
-            <span class="info info__race">Race </span>
-            <span *ngIf="!editMode; else elseBlockRace">
-                {{character.race.designation}}
-            </span>
-            <ng-template #elseBlockRace>
-                <label for="race"></label>
-                <select name="race" [(ngModel)]="character.race" id="race">
-                    <option *ngFor="let race of racesList" value={{race.designation}}>{{race.designation}}</option>
-                </select>
-            </ng-template>
-        </p>
-        
-        <p>
-            <span class="info info__subgroup">Sous-faction</span>
-            <span *ngIf="!editMode; else elseBlockSubgroup">
-                {{character.subgroup}}
-            </span>
-            <ng-template #elseBlockSubgroup>
-                <label for="subgroup"></label>
-                <input id="subgroup" [(ngModel)]="character.subgroup">
-            </ng-template>
-        </p>
-    
-        <p>
-            <span class="info info__archetype">Archétype</span>
-            <span *ngIf="!editMode; else elseBlockArchetype">
-                {{character.archetype}}
-            </span>
-            <ng-template #elseBlockArchetype>
-                <label for="archetype"></label>
-                <input id="archetype" [(ngModel)]="character.archetype">
-            </ng-template>
-        </p>
-    
-        <p>
-            <span class="info info__goal">But</span>
-            <span *ngIf="!editMode; else elseBlockGoal">
-                {{character.goal}}
-            </span>
-            <ng-template #elseBlockGoal>
-                <label for="goal"></label>
-                <input id="goal" [(ngModel)]="character.goal">
-            </ng-template>
-        </p>
+        <table>
+            <thead>
+                <td></td>
+                <td></td>
+                <td></td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="info info__name">Nom </span>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockName">
+                            {{character.name}}
+                        </span>
+                        <ng-template #elseBlockName>
+                            <label for="name"></label>
+                            <input id="name" [(ngModel)]="character.name">
+                        </ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="info info__race">Race </span>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockRace">
+                            {{character.race.name}}
+                        </span>
+                        <ng-template #elseBlockRace>
+                            <label for="race"></label>
+                            <select name="race" [(ngModel)]="character.race" id="race">
+                                <option *ngFor="let race of racesList" [ngValue]="race">{{race.name}}</option>
+                            </select>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+                <td></td>
+                <td></td>
+                <td></td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="info info__subgroup">Sous-faction</span>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockSubgroup">
+                            {{character.subgroup}}
+                        </span>
+                        <ng-template #elseBlockSubgroup>
+                            <label for="subgroup"></label>
+                            <input id="subgroup" [(ngModel)]="character.subgroup">
+                        </ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="info info__archetype">Archétype</span>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockArchetype">
+                            {{character.archetype}}
+                        </span>
+                        <ng-template #elseBlockArchetype>
+                            <label for="archetype"></label>
+                            <input id="archetype" [(ngModel)]="character.archetype">
+                        </ng-template>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="info info__goal">But</span>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockGoal">
+                            {{character.goal}}
+                        </span>
+                        <ng-template #elseBlockGoal>
+                            <label for="goal"></label>
+                            <input id="goal" [(ngModel)]="character.goal">
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>  
     </div>
 
     <div class="container card">
@@ -282,7 +315,7 @@
         <div class="row">
             <div class="col border">
                 <h3>Destinée</h3>
-                <input type="checkbox" value="{{character.destinyPoint}}">
+                <input type="checkbox" [checked]="character.destinyPoint">
             </div>
     
             <div class="col border">
@@ -298,9 +331,9 @@
                         <tr *ngFor="let healthStatus of healthStatusList">
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="healthRadioGroup" id="healthRadioGroup1" 
-                                        value="{{healthStatus}}" [(ngModel)]="character.healthStatus">
-                                    <label class="form-check-label" for="healthRadioGroup1">
+                                    <input class="form-check-input" type="radio" name="healthRadioGroup" id="healthRadioGroup+{{healthStatus.description}}" 
+                                        value="{{healthStatus}}" [(ngModel)]="character.healthStatus" [checked]="true">
+                                    <label class="form-check-label" for="healthRadioGroup+{{healthStatus.description}}">
                                     {{healthStatus.description}}
                                     </label>
                                 </div>

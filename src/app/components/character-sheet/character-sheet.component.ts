@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Character } from 'model/character';
 import { HealthStatusList } from 'model/healthStatus';
 import { Race } from 'model/race';
+import { Job } from 'model/job';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 import { RulesService } from '../../services/rules.service';
 
@@ -15,8 +16,8 @@ export class CharacterSheetComponent implements OnInit {
 
   character: Character; // character to display
   
-
   racesList: Race[]; //used in the dropdown menu
+  jobsList: Job[];
 
   healthStatusList = HealthStatusList;
   
@@ -34,6 +35,7 @@ export class CharacterSheetComponent implements OnInit {
     this.character = this.characterSheetManagementService.getCharacterSheet(characterId);
 
     this.racesList = this.rulesService.getRacesList();
+    this.jobsList = this.rulesService.getJobsList();
   }
 
   onClickEditButton()  {
@@ -54,5 +56,8 @@ export class CharacterSheetComponent implements OnInit {
     this.characterSheetManagementService.exportCharacterSheet(this.character);
   }
 
+  onSelectRace(event) {
+    this.character.race = this.racesList[1];
+  }
 
 }

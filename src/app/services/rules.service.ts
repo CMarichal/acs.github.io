@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Race, RacesList } from 'model/race';
+import { Race, Races } from 'model/race';
+import { Job, Jobs } from 'model/job';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RulesService {
 
-  racesList: Race[] = RacesList;
-  
+  racesList = Races.RacesList;
+  jobsList = Jobs.JobList;
+
   constructor() { }
 
   getRacesList()
   {
     return this.racesList;
+  }
+  getJobsList()
+  {
+    return this.jobsList;
   }
 }

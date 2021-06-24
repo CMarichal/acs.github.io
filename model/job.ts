@@ -1,20 +1,27 @@
-export abstract class Job {
-    static designation: string;
-    get designation() {return Job.designation;}
+export class Job {
+    name: string;
 }
 
-export abstract class JobRanged extends Job {
-    static designation = "A distance";
-}
+export namespace Jobs {
+    export const JOB_MELEE: Job = {
+        name: "Combattant"
+    }
+    export const JOB_RANGED: Job = {
+        name: "A distance"
+    }
 
-export abstract class JobMelee extends Job {
-    static designation = "Combattant";
-}
+    export const JOB_SUPPORT: Job = {
+        name: "Soutien"
+    }
 
-export abstract class JobSupport extends Job {
-    static designation = "Soutien";
-}
+    export const JOB_CAVALRY: Job = {
+        name: "Monté"
+    }
 
-export abstract class JobCavalry extends Job {
-    static designation = "Monté";
+    export const JobList: Job[] = [
+        JOB_MELEE,
+        JOB_RANGED,
+        JOB_SUPPORT,
+        JOB_CAVALRY
+    ]
 }

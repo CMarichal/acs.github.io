@@ -1,16 +1,16 @@
 import { Character } from "model/character";
-import { JobMelee } from "model/job";
-import { RaceBrokenLord } from "model/race";
+import { Jobs } from "model/job";
+import { Races } from "model/race";
 import { HealthStatusNormal } from "model/healthStatus";
 
-export const testCharacter: Character = new Character("Bob Morane", RaceBrokenLord, JobMelee);
+export const testCharacter: Character = new Character("Bob Morane", Races.RACE_BROKEN_LORDS, Jobs.JOB_MELEE);
 
 export const testCharacters: Character[] = [
     {
         id:0,
         name:"Bob Morane",
-        race: RaceBrokenLord,
-        job: JobMelee,
+        race: Races.RACE_BROKEN_LORDS,
+        job: Jobs.JOB_MELEE,
         subgroup:"Nouvelle Ambre",
         goal:"Tuer le Comte Sanglant",
         archetype:"Vengeur solitaire",
