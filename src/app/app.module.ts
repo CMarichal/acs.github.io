@@ -4,14 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { CharacterSheetComponent } from './character-sheet/character-sheet.component';
-import { HomeComponent } from './home/home.component';
+import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
+import { HomeComponent } from './components/home/home.component';
+import { ModifierPipe } from './pipes/modifier.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterSheetComponent,
-    HomeComponent
+    HomeComponent,
+    ModifierPipe
   ],
   imports: [
     BrowserModule,

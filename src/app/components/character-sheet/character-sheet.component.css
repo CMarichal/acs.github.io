@@ -35,15 +35,26 @@ h1.sheet-title
     font-style: italic;
 }
 
-.characteristic.characteristic__name
+.category.category__name
 {
     font-size: 1.8em;
 }
 
-.characteristic.characteristic__pure-value
+.category.categoryc__pure-value
 {
     font-size: 1em;
 }
+
+.skill.skill__positive-value
+{
+    color: green;
+}
+
+.skill.skill__negative-value
+{
+    color: red;
+}
+
 
 
 .hexagon {

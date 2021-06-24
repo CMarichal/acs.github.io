@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from 'model/character';
-import { CharacterSheetManagementService } from '../services/character-sheet-management.service';
+import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 
 @Component({
   selector: 'app-home',

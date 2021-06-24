@@ -3,8 +3,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Character } from 'model/character';
 import { HealthStatusList } from 'model/healthStatus';
 import { Race } from 'model/race';
-import { CharacterSheetManagementService } from '../services/character-sheet-management.service';
-import { RulesService } from '../services/rules.service';
+import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
+import { RulesService } from '../../services/rules.service';
 
 @Component({
   selector: 'app-character-sheet',

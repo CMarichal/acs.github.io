@@ -76,11 +76,11 @@
         <div class="row">
             <div class="col-md border">
                 <div>
-                    <span class="characteristic characteristic__name">Vigueur</span>
+                    <span class="category category__name">Vigueur</span>
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueVigor" >
                             <div class="hexagon">
-                                <span class="characteristic characteristic__pure-value">{{character.stats.vigor.pureValue}}</span>
+                                <span class="category category__pure-value">{{character.stats.vigor.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueVigor>
@@ -108,7 +108,12 @@
                                     <input class="skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.modifier}}</td>
+                            <td>
+                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                                'skill__positive-value':skill.modifier>0}">
+                                                {{skill.modifier | modifier}}
+                                </span>
+                            </td>
                             <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
@@ -117,11 +122,11 @@
         
             <div class="col-md border">
                 <div>
-                    <span class="characteristic characteristic__name">Dextérité</span>
+                    <span class="category category__name">Dextérité</span>
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueDexterity" >
                             <div class="hexagon">
-                                <span class="characteristic characteristic__pure-value">{{character.stats.dexterity.pureValue}}</span>
+                                <span class="category category__pure-value">{{character.stats.dexterity.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueDexterity>
@@ -149,7 +154,12 @@
                                     <input class="skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.modifier}}</td>
+                            <td>
+                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                                'skill__positive-value':skill.modifier>0}">
+                                                {{skill.modifier | modifier}}
+                                </span>
+                            </td>
                             <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
@@ -158,11 +168,11 @@
         
             <div class="col-md border">
                 <div>
-                    <span class="characteristic characteristic__name">Intelligence</span>
+                    <span class="category category__name">Intelligence</span>
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueIntelligence" >
                             <div class="hexagon">
-                                <span class="characteristic characteristic__pure-value">{{character.stats.intelligence.pureValue}}</span>
+                                <span class="category category__pure-value">{{character.stats.intelligence.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueIntelligence>
@@ -191,7 +201,13 @@
                                     <input class=" skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.modifier}}</td>
+
+                            <td>
+                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                                'skill__positive-value':skill.modifier>0}">
+                                                {{skill.modifier | modifier}}
+                                </span>
+                            </td>
                             <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
@@ -200,11 +216,11 @@
         
             <div class="col-md border">
                 <div>
-                    <span class="characteristic characteristic__name">Charisme</span>
+                    <span class="category category__name">Charisme</span>
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueCharisma" >
                             <div class="hexagon">
-                                <span class="characteristic characteristic__pure-value">{{character.stats.charisma.pureValue}}</span>
+                                <span class="category category__pure-value">{{character.stats.charisma.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueCharisma>
@@ -233,7 +249,12 @@
                                     <input class=" skill-input" id="{{skill.name}}" type="number" [(ngModel)]="skill.baseValue">
                                 </ng-template>
                             </td>
-                            <td>{{skill.modifier}}</td>
+                            <td>
+                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                                'skill__positive-value':skill.modifier>0}">
+                                                {{skill.modifier | modifier}}
+                                </span>
+                            </td>
                             <td>{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
@@ -273,7 +294,7 @@
                                     </label>
                                 </div>
                             </td>
-                            <td>{{healthStatus.malus}}</td>
+                            <td>{{healthStatus.malus | modifier}}</td>
                             <td>{{healthStatus.recovery}}</td>
                         </tr>
                     </tbody>
