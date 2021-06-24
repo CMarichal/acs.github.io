@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { CharacterSheetComponent } from './components/character-sheet/character-sheet.component';
 import { HomeComponent } from './components/home/home.component';
 import { ModifierPipe } from './pipes/modifier.pipe';
+import { DisplayModifierPipe } from './pipes/display-modifier.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterSheetComponent,
     HomeComponent,
-    ModifierPipe
+    ModifierPipe,
+    DisplayModifierPipe
   ],
   imports: [
     BrowserModule,

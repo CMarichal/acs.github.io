@@ -1,6 +1,11 @@
 import { ItemManagement } from "model/item"
 
 export namespace MaterialCommons  {
+    export const MATERIAL_UNKNOWN: ItemManagement.MaterialUnknown = {
+        name: "inconnu",
+        modifier: 0
+    }
+
     export const MATERIAL_IRON: ItemManagement.MaterialLight = {
         name: "fer",
         modifier: 0

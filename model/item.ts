@@ -1,8 +1,12 @@
+import { MaterialCommons } from "data/materialsBDD";
+import { SimpleStats } from "./stats";
 
 export namespace ItemManagement {
     export class Item {
+        id:number=0;
         name: string="";
         effects: string="";
+        statModifiers: SimpleStats = {};
     }
     
     abstract class Material {
@@ -11,13 +15,9 @@ export namespace ItemManagement {
     }
     
     export class MaterialUnknown extends Material {
-        name="";
-        modifier=0;
     }
     
     export class MaterialHeavy extends Material {
-        name="";
-        modifier=0;
     }
     
     export class MaterialLight extends Material {
@@ -29,7 +29,7 @@ export namespace ItemManagement {
     
     abstract class Equipement extends Item {
         type: string="";
-        material: Material;
+        material: Material = MaterialCommons.MATERIAL_UNKNOWN;
     }
     
     export class Weapon extends Equipement {

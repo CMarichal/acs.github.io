@@ -6,6 +6,7 @@ import { Race } from 'model/race';
 import { Job } from 'model/job';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 import { RulesService } from '../../services/rules.service';
+import { ItemManagement } from 'model/item';
 
 @Component({
   selector: 'app-character-sheet',
@@ -56,8 +57,22 @@ export class CharacterSheetComponent implements OnInit {
     this.characterSheetManagementService.exportCharacterSheet(this.character);
   }
 
-  onSelectRace(event) {
-    this.character.race = this.racesList[1];
+  onHealthStatusChange() {
+    this.rulesService.updateModifiers(this.character);
+  }
+
+  onClickAddArmor() {
+    var newArmor = new ItemManagement.Armor();
+    newArmor.id = this.character.armor.length;
+    this.character.armor.push(newArmor);
+  }
+
+  onClickAddWeapon() {
+    this.character.weapons.push(new ItemManagement.Weapon());
+  }
+
+  onClickAddItem() {
+    this.character.inventory.push(new ItemManagement.Item());
   }
 
 }
