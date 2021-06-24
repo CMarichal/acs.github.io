@@ -1,47 +1,46 @@
 
-export abstract class HealthStatus {
-    static description: string;
-    static malus: number;
-    static recovery: string;
-
-    get description() {return HealthStatus.description;}
-    get malus() {return HealthStatus.malus;}
-    get recovery() {return HealthStatus.recovery;}
+export class HealthStatus {
+    description: string;
+    malus: number;
+    recovery: string;
 }
 
-export abstract class HealthStatusNormal extends HealthStatus{
-    static description = "Normal";
-    static malus = 0;
-    static recovery = "-";
+export namespace HealthStatuses {
+    export const HEALTH_NORMAL: HealthStatus = {
+        description: "Normal",
+        malus: 0,
+        recovery: "-"
+    }
+    export const HEALTH_DIZZY: HealthStatus = {
+        description : "Secoué",
+        malus : -5,
+        recovery : "5 min"
+    }
+
+    export const HEALTH_SLIGHTLY_HARMED: HealthStatus = {
+        description : "Légèrement blessé",
+        malus : -10,
+        recovery : "1 jour / Premiers soins"
+    }
+
+    export const HEALTH_SEVERELY_HARMED: HealthStatus = {
+        description: "Gravement blessé",
+        malus: -25,
+        recovery: "1 semaine / chirurgie"
+    }
+
+    export const HEALTH_DEAD: HealthStatus = {
+        description: "Mort",
+        malus: 0,
+        recovery: "-"
+    }
+
+    export const HealthStatusesList: HealthStatus[] = [
+        HEALTH_NORMAL,
+        HEALTH_DIZZY,
+        HEALTH_SLIGHTLY_HARMED,
+        HEALTH_SEVERELY_HARMED,
+        HEALTH_DEAD
+    ]
 }
 
-abstract class HealthStatusDizzy extends HealthStatus{
-    static description = "Secoué";
-    static malus = -5;
-    static recovery = "5 min";
-}
-
-abstract class HealthStatusSlightlyHarmed extends HealthStatus{
-    static description = "Légèrement blessé";
-    static malus = -10;
-    static recovery = "1 jour / Premiers soins";
-}
-
-abstract class HealthStatusSeverelyHarmed extends HealthStatus{
-    static description = "Gravement blessé";
-    static malus = -25;
-    static recovery = "1 semaine / chirurgie";
-}
-
-abstract class HealthStatusDead extends HealthStatus{
-    static description = "Mort";
-    static malus = 0;
-    static recovery = "-";
-}
-
-export const HealthStatusList = [
-    HealthStatusNormal, 
-    HealthStatusDizzy, 
-    HealthStatusSlightlyHarmed, 
-    HealthStatusSeverelyHarmed, 
-    HealthStatusDead]

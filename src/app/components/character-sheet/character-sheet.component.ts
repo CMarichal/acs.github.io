@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Character } from 'model/character';
-import { HealthStatusList } from 'model/healthStatus';
+import { HealthStatuses } from 'model/healthStatus';
 import { Race } from 'model/race';
 import { Job } from 'model/job';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
@@ -19,7 +19,7 @@ export class CharacterSheetComponent implements OnInit {
   racesList: Race[]; //used in the dropdown menu
   jobsList: Job[];
 
-  healthStatusList = HealthStatusList;
+  healthStatusList = HealthStatuses.HealthStatusesList;
   
   editMode: boolean = false;
 

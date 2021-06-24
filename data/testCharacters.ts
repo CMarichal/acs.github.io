@@ -1,7 +1,7 @@
 import { Character } from "model/character";
 import { Jobs } from "model/job";
 import { Races } from "model/race";
-import { HealthStatusNormal } from "model/healthStatus";
+import { HealthStatuses } from "model/healthStatus";
 
 export const testCharacter: Character = new Character("Bob Morane", Races.RACE_BROKEN_LORDS, Jobs.JOB_MELEE);
 
@@ -15,7 +15,7 @@ export const testCharacters: Character[] = [
         goal:"Tuer le Comte Sanglant",
         archetype:"Vengeur solitaire",
         destinyPoint:true,
-        healthStatus: HealthStatusNormal,
+        healthStatus: HealthStatuses.HEALTH_NORMAL,
         dustLevel: 3,
         stats: {
             vigor: {

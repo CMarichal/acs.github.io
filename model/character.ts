@@ -1,7 +1,7 @@
 import { Race } from "./race";
 import { Job } from "./job";
 import { ItemManagement } from "./item";
-import { HealthStatus, HealthStatusNormal } from "./healthStatus";
+import { HealthStatus, HealthStatuses } from "./healthStatus";
 import { Stats } from "./stats";
 
 
@@ -27,7 +27,7 @@ export class Character {
 
     destinyPoint: Boolean=false;
 
-    healthStatus:  HealthStatus= HealthStatusNormal;
+    healthStatus:  HealthStatus= HealthStatuses.HEALTH_NORMAL;
 
     dustLevel: number=1;
 

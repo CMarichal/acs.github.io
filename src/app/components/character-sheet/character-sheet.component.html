@@ -332,7 +332,7 @@
                             <td>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="healthRadioGroup" id="healthRadioGroup+{{healthStatus.description}}" 
-                                        value="{{healthStatus}}" [(ngModel)]="character.healthStatus" [checked]="true">
+                                        [value]="healthStatus" [(ngModel)]="character.healthStatus" [checked]="true">
                                     <label class="form-check-label" for="healthRadioGroup+{{healthStatus.description}}">
                                     {{healthStatus.description}}
                                     </label>
