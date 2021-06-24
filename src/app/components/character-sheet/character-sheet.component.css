@@ -40,7 +40,7 @@ h1.sheet-title
     font-size: 1.8em;
 }
 
-.category.categoryc__pure-value
+.category.category__pure-value
 {
     font-size: 1em;
 }
@@ -53,6 +53,11 @@ h1.sheet-title
 .skill.skill__negative-value
 {
     color: red;
+}
+
+.skill.skill__total
+{
+    font-weight:600;
 }
 
 .subskill

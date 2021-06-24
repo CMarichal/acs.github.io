@@ -6,10 +6,17 @@ import { Skill } from 'model/stats';
 })
 export class ModifierPipe implements PipeTransform {
 
-  transform(skill: Skill): number {
-    if (skill.expert) {
-      return skill.modifier + 10;
+  transform(value: number): string {
+    if (value < 0)
+    {
+      return "- "+(-value);
     }
+    else if (value > 0)
+    {
+      return "+ "+value;
+    }
+    return "-";
   }
+
 
 }

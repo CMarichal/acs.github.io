@@ -63,18 +63,22 @@ export class CharacterSheetComponent implements OnInit {
     this.rulesService.updateModifiers(this.character);
   }
 
+  onClickAddWeapon() {
+    var newWeapon = new ItemManagement.Weapon();
+    newWeapon.id = this.character.armor.length;
+    this.character.weapons.push();
+  }
+
   onClickAddArmor() {
     var newArmor = new ItemManagement.Armor();
-    newArmor.id = this.character.armor.length;
+    newArmor.id = this.character.weapons.length;
     this.character.armor.push(newArmor);
   }
 
-  onClickAddWeapon() {
-    this.character.weapons.push(new ItemManagement.Weapon());
-  }
-
   onClickAddItem() {
-    this.character.inventory.push(new ItemManagement.Item());
+    var newItem = new ItemManagement.Item();
+    newItem.id = this.character.inventory.length;
+    this.character.inventory.push(newItem);
   }
 
   onClickDeleteWeapon(id: number) {

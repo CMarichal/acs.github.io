@@ -157,7 +157,7 @@
                                                 {{skill.modifier | modifier}}
                                 </span>
                             </td>
-                            <td>{{skill.baseValue + skill.modifier}}</td>
+                            <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -183,7 +183,7 @@
                         <th></th>
                         <th>Base</th>
                         <th>Modificateur</th>
-                        <th><em>Total</em></th>
+                        <th>Total</th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let skill of character.stats.dexterity.getSkills()">
@@ -200,10 +200,10 @@
                             <td>
                                 <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
-                                                {{skill.modifier | modifier | displayModifier}}
+                                                {{skill.modifier | modifier}}
                                 </span>
                             </td>
-                            <td>{{skill.baseValue + skill.modifier}}</td>
+                            <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -262,7 +262,7 @@
                                                 {{skill.modifier | modifier}}
                                 </span>
                             </td>
-                            <td>{{skill.baseValue + skill.modifier}}</td>
+                            <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -309,7 +309,7 @@
                                                 {{skill.modifier | modifier}}
                                 </span>
                             </td>
-                            <td>{{skill.baseValue + skill.modifier}}</td>
+                            <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
                     </tbody>
                 </table>
