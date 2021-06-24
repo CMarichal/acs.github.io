@@ -77,4 +77,16 @@ export class CharacterSheetComponent implements OnInit {
     this.character.inventory.push(new ItemManagement.Item());
   }
 
+  onClickDeleteWeapon(id: number) {
+    this.character.weapons.splice(id);
+  }
+
+  onClickDeleteArmor(id: number) {
+    this.character.armor.splice(id);
+  }
+
+  onClickDeleteItem(id: number) {
+    this.character.inventory.splice(id);
+  }
+
 }

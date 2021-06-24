@@ -397,15 +397,14 @@
                 <th>Matériau</th>
                 <th>Effets</th>
                 <th *ngIf="editMode">
-                    <button class="btn btn-secondary" (click)="onClickAddWeapon()">Ajouter</button>
+                    <button class="btn btn-secondary" (click)="onClickAddWeapon()">+</button>
                 </th>
             </thead>
             <tbody>
                 <tr *ngFor="let weapon of character.weapons">
                     <td>
                         <input class="form-check-input" type="radio" name="healthRadioGroup" id="weaponEquipped+{{weapon.id}}" 
-                        [value]="weapon.id" [checked]="weapon.equiped">
-                        
+                        [value]="weapon.id" [checked]="weapon.equiped">   
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockWeaponName">
@@ -445,7 +444,9 @@
                             <input id="weaponEffects{{weapon.id}}" [(ngModel)]="weapon.effects">
                         </ng-template>
                     </td>
-                    <td *ngIf="editMode">BUTTONS</td>
+                    <td *ngIf="editMode">
+                        <button class="btn btn-danger" (click)="onClickDeleteWeapon(weapon.id)">-</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -459,7 +460,7 @@
                 <th>Matériau</th>
                 <th>Effets</th>
                 <th *ngIf="editMode">
-                    <button class="btn btn-secondary" (click)="onClickAddArmor()">Ajouter</button>
+                    <button class="btn btn-secondary" (click)="onClickAddArmor()">+</button>
                 </th>
             </thead>
             <tbody>
@@ -505,7 +506,9 @@
                             <input id="armorEffects{{armor.id}}" [(ngModel)]="armor.effects">
                         </ng-template>
                     </td>
-                    <td *ngIf="editMode">BUTTONS</td>
+                    <td *ngIf="editMode">
+                        <button class="btn btn-danger" (click)="onClickDeleteArmor(armor.id)">-</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -516,7 +519,7 @@
                 <th>Nom</th>
                 <th>Effets</th>
                 <th *ngIf="editMode">
-                    <button class="btn btn-secondary" (click)="onClickAddItem()">Ajouter</button>
+                    <button class="btn btn-secondary" (click)="onClickAddItem()">+</button>
                 </th>
             </thead>
             <tbody>
@@ -539,7 +542,9 @@
                             <input id="itemEffects{{item.id}}" [(ngModel)]="item.effects">
                         </ng-template>
                     </td>
-                    <td *ngIf="editMode">BUTTONS</td>
+                    <td *ngIf="editMode">
+                        <button class="btn btn-danger" (click)="onClickDeleteItem(item.id)">-</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
