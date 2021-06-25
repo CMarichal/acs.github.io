@@ -8,6 +8,7 @@ import { CharacterSheetManagementService } from '../../services/character-sheet-
 import { RulesService } from '../../services/rules.service';
 import { ItemManagement } from 'model/item';
 import { Capacity } from 'model/capacities';
+import { Ability } from 'model/abilities';
 
 @Component({
   selector: 'app-character-sheet',
@@ -21,6 +22,7 @@ export class CharacterSheetComponent implements OnInit {
   racesList: Race[]; //used in the dropdown menu
   jobsList: Job[];
   materialList: ItemManagement.Material[];
+  abilitiesCommonsList: Ability[];
 
   healthStatusList = HealthStatuses.HealthStatusesList;
   
@@ -40,6 +42,7 @@ export class CharacterSheetComponent implements OnInit {
     this.racesList = this.rulesService.getRacesList();
     this.jobsList = this.rulesService.getJobsList();
     this.materialList = this.rulesService.getMaterialsList();
+    this.abilitiesCommonsList = this.rulesService.getAbilitiesCommonsList();
   }
 
   onClickEditButton()  {

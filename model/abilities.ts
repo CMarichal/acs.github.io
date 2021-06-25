@@ -113,6 +113,19 @@ export namespace AbilitiesCommons {
         linkedAbilities: ["C4L", "C4C", "C4R", "J5R", "R5L"],
         icon:""
     }
+
+    export const ABILITY_C_LIST: Ability[] = [
+        ABILITY_C1C,
+        ABILITY_C2L,
+        ABILITY_C2R,
+        ABILITY_C3L,
+        ABILITY_C3C,
+        ABILITY_C3R,
+        ABILITY_C4L,
+        ABILITY_C4C,
+        ABILITY_C4R,
+        ABILITY_C5C,
+    ]
 }
 
 
@@ -566,7 +579,7 @@ export namespace AbilitiesRace {
         
         export const ABILITY_R5L: Ability = {
             key: "R5L",
-            name: "Abondance de foi",
+            name: "Abondance",
             effects: "+10 en Préparation, +10 au Savoir-faire « Premier soins »",
             modifiers: {"KNH-FSA":10,"PRP":10},
             embededCapacity: null,

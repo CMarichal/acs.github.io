@@ -622,7 +622,54 @@
 
     <div class="container card">
         <h2>Aptitudes</h2>
-    
+
+        <h3>Classe</h3>
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>Aptitude</th>
+                <th>Effets</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ability of character.job.abilities">
+                    <td>ICON</td>
+                    <td>{{ability.name}}</td>
+                    <td>{{ability.effects}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Commun</h3>
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>Aptitude</th>
+                <th>Effets</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ability of abilitiesCommonsList">
+                    <td>ICON</td>
+                    <td>{{ability.name}}</td>
+                    <td>{{ability.effects}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Race</h3>
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>Aptitude</th>
+                <th>Effets</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ability of character.race.abilities">
+                    <td>ICON</td>
+                    <td>{{ability.name}}</td>
+                    <td>{{ability.effects}}</td>
+                </tr>
+            </tbody>
+        </table>
     
     </div>
 
