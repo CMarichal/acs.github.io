@@ -9,7 +9,7 @@ export const testCharacters: Character[] = [
     {
         id:0,
         name:"Bob Morane",
-        race: Races.RACE_BROKEN_LORDS,
+        race: Races.RACE_DRAKKEN,
         job: Jobs.JOB_MELEE,
         subgroup:"Nouvelle Ambre",
         goal:"Tuer le Comte Sanglant",

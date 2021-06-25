@@ -115,3 +115,29 @@ h1.sheet-title
     border-radius: 0.1em;
     width: 3.5em;
 }
+
+.trees
+{
+    width: 10em;
+    height: 20em;
+}
+
+.tree.tree--job
+{
+    position: absolute;
+    left: 17.5%;
+}
+
+.tree.tree--common
+{
+    position: absolute;
+    left: 35%;
+    top:2.75%;
+}
+
+.tree.tree--race
+{
+    position: absolute;
+    left: 42.5%;
+    top:3%;
+}

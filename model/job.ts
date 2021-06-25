@@ -3,6 +3,7 @@ import { AbilitiesCommons, AbilitiesJob, Ability } from "./abilities";
 export class Job {
     name: string;
     abilities: Ability[];
+    abilityTreeImg: string;
 }
 
 export namespace Jobs {
@@ -15,7 +16,8 @@ export namespace Jobs {
             AbilitiesJob.Melee.ABILITY_J4L,
             AbilitiesJob.Melee.ABILITY_J4R,
             AbilitiesJob.Melee.ABILITY_J5R
-        ]
+        ],
+        abilityTreeImg:"j-m-abtree"
     }
     export const JOB_RANGED: Job = {
         name: "A distance",
@@ -26,7 +28,8 @@ export namespace Jobs {
             AbilitiesJob.Ranged.ABILITY_J4L,
             AbilitiesJob.Ranged.ABILITY_J4R,
             AbilitiesJob.Ranged.ABILITY_J5R
-        ]
+        ],
+        abilityTreeImg:"j-r-abtree"
     }
 
     export const JOB_SUPPORT: Job = {
@@ -38,13 +41,14 @@ export namespace Jobs {
             AbilitiesJob.Support.ABILITY_J3R,
             AbilitiesJob.Support.ABILITY_J4R,
             AbilitiesJob.Support.ABILITY_J5R
-        ]
+        ],
+        abilityTreeImg:"j-s-abtree"
     }
 
     export const JOB_CAVALRY: Job = {
         name: "Monté",
-        abilities: []
-        
+        abilities: [],
+        abilityTreeImg:"j-b-abtree"
     }
 
     export const JobList: Job[] = [

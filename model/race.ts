@@ -3,6 +3,7 @@ import { AbilitiesRace, Ability } from "./abilities";
 export class Race {
     name: string;
     abilities: Ability[] = [];
+    abilityTreeImg: string = "";
 }
 
 export namespace Races {
@@ -15,12 +16,14 @@ export namespace Races {
             AbilitiesRace.Vaulter.ABILITY_R3R,
             AbilitiesRace.Vaulter.ABILITY_R4L,
             AbilitiesRace.Vaulter.ABILITY_R5C
-        ]
+        ],
+        abilityTreeImg:"v-abtree"
     }
 
     export const RACE_WILD_WALKERS: Race = {
         name: "Indomptés",
-        abilities: []
+        abilities: [],
+        abilityTreeImg:"i-abtree"
     }
 
     export const RACE_ARDENT_MAGES: Race = {
@@ -32,17 +35,20 @@ export namespace Races {
             AbilitiesRace.ArdentMage.ABILITY_R3R,
             AbilitiesRace.ArdentMage.ABILITY_R4L,
             AbilitiesRace.ArdentMage.ABILITY_R5L
-        ]
+        ],
+        abilityTreeImg:"am-abtree"
     }
 
     export const RACE_BROKEN_LORDS: Race = {
         name: "Seigneurs Déchus",
-        abilities: []
+        abilities: [],
+        abilityTreeImg:"bl-abtree"
     }
 
     export const RACE_ROVING_CLANS: Race = {
         name: "Clans Errants",
-        abilities: []
+        abilities: [],
+        abilityTreeImg:"rc-abtree"
     }
 
     export const RACE_DRAKKEN: Race = {
@@ -54,17 +60,20 @@ export namespace Races {
             AbilitiesRace.Drakken.ABILITY_R4L,
             AbilitiesRace.Drakken.ABILITY_R5L,
             AbilitiesRace.Drakken.ABILITY_R5R
-        ]
+        ],
+        abilityTreeImg:"d-abtree"
     }
 
     export const RACE_KAPAKU: Race = {
         name: "Kapaku",
-        abilities: []
+        abilities: [],
+        abilityTreeImg:"k-abtree"
     }
 
     export const RACE_FORGOTTENS: Race = {
         name: "Oubliés",
-        abilities: []
+        abilities: [],
+        abilityTreeImg:"f-abtree"
     }
 
     export const RACE_SISTER_OF_MERCY: Race = {
@@ -76,12 +85,14 @@ export namespace Races {
             AbilitiesRace.SistersOfMercy.ABILITY_R4C,
             AbilitiesRace.SistersOfMercy.ABILITY_R5L,
             AbilitiesRace.SistersOfMercy.ABILITY_R5R
-        ]
+        ],
+        abilityTreeImg:"som-abtree"
     }
 
     export const RACE_MAGTAY: Race = {
         name: "Magtay",
-        abilities: []
+        abilities: [],
+        abilityTreeImg:"o-abtree"
     }
 
     export const RacesList: Race[] = [

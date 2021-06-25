@@ -1,4 +1,4 @@
-{{character|json}}
+
 <div class="container card">
     <div class="card-header">
         <h1 class="sheet-title">Fiche personnage</h1>
@@ -614,6 +614,14 @@
 
     <div class="container card">
         <h2>Aptitudes</h2>
+       <div class="container">
+        
+            <div class="trees">
+                <img src="assets/abilities-tree/{{character.job.abilityTreeImg}}.png" width=400 class="tree tree--job"/>
+                <img src="assets/abilities-tree/common-abtree.png" width=250 class="tree tree--common"/>
+                <img src="assets/abilities-tree/{{character.race.abilityTreeImg}}.png" width=350 class="tree tree--race"/>
+            </div>
+        </div>
 
         <h3>Classe</h3>
         <table class="table">
@@ -624,7 +632,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let ability of character.job.abilities">
-                    <td>ICON</td>
+                    <td><img src="assets/abilities-icons/{{ability.icon}}.png" width="75"/></td>
                     <td>{{ability.name}}</td>
                     <td>{{ability.effects}}</td>
                 </tr>
@@ -640,7 +648,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let ability of abilitiesCommonsList">
-                    <td>ICON</td>
+                    <td><img src="assets/abilities-icons/{{ability.icon}}.png" width="75"/></td>
                     <td>{{ability.name}}</td>
                     <td>{{ability.effects}}</td>
                 </tr>
@@ -656,7 +664,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let ability of character.race.abilities">
-                    <td>ICON</td>
+                    <td><img src="assets/abilities-icons/{{ability.icon}}.png" width="75"/></td>
                     <td>{{ability.name}}</td>
                     <td>{{ability.effects}}</td>
                 </tr>

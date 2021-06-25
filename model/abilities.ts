@@ -21,7 +21,7 @@ export namespace AbilitiesCommons {
         modifiers: {"KNL-AUR":20},
         embededCapacity: null,
         linkedAbilities: ["C2L", "C2R"],
-        icon:""
+        icon:"c1c"
     }
 
     export const ABILITY_C2L: Ability = {
@@ -31,7 +31,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: null,
         linkedAbilities: ["C1L", "J2C", "C3L", "C3C"],
-        icon:""
+        icon:"c2l"
     }
 
     export const ABILITY_C2R: Ability = {
@@ -41,7 +41,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: CapacitiesCommons.CAPACITY_QUICK_FIRST_AIDS,
         linkedAbilities: ["C1L", "R2L", "C3C", "C3R"],
-        icon:""
+        icon:"c2r"
     }
 
     export const ABILITY_C3L: Ability = {
@@ -51,7 +51,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: null,
         linkedAbilities: ["C2L", "C4L"],
-        icon:""
+        icon:"c3l"
     }
 
     export const ABILITY_C3C: Ability = {
@@ -61,7 +61,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: null,
         linkedAbilities: ["C2L", "C2R", "C4C"],
-        icon:""
+        icon:"c3c"
     }
 
     export const ABILITY_C3R: Ability = {
@@ -71,7 +71,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: null,
         linkedAbilities: ["C2R", "J2L", "J4L"],
-        icon:""
+        icon:"c3r"
     }
 
     export const ABILITY_C4L: Ability = {
@@ -81,7 +81,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: null,
         linkedAbilities: ["C5C", "C3L"],
-        icon:""
+        icon:"c4l"
     }
 
     export const ABILITY_C4C: Ability = {
@@ -91,7 +91,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: CapacitiesCommons.CAPACITY_TALENTED_COMIC,
         linkedAbilities: ["C5C", "C3C", "C3R"],
-        icon:""
+        icon:"c4c"
     }
 
     export const ABILITY_C4R: Ability = {
@@ -101,7 +101,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: null,
         linkedAbilities: ["C3R", "C5C"],
-        icon:""
+        icon:"c4r"
     }
 
     export const ABILITY_C5C: Ability = {
@@ -111,7 +111,7 @@ export namespace AbilitiesCommons {
         modifiers: {},
         embededCapacity: CapacitiesCommons.CAPACITY_STEEL_FISTS,
         linkedAbilities: ["C4L", "C4C", "C4R", "J5R", "R5L"],
-        icon:""
+        icon:"c5c"
     }
 
     export const ABILITY_C_LIST: Ability[] = [
@@ -153,7 +153,7 @@ export namespace AbilitiesJob {
             modifiers: {"KNH-FSA":15},
             embededCapacity: null,
             linkedAbilities: ["J2C"],
-            icon:""
+            icon:"m-j1c"
         }
 
         export const ABILITY_J2C: Ability = {
@@ -163,7 +163,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: null,
             linkedAbilities: ["J1C", "J3C", "C2L"],
-            icon:""
+            icon:"m-j2c"
         }
 
         export const ABILITY_J3C: Ability = {
@@ -173,7 +173,7 @@ export namespace AbilitiesJob {
             modifiers: {"BRV":10, "LDS":10},
             embededCapacity: null,
             linkedAbilities: ["J2C", "J4L"],
-            icon:""
+            icon:"m-j3c"
         }
 
         export const ABILITY_J4L: Ability = {
@@ -183,7 +183,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_STEEL_GUARD,
             linkedAbilities: ["J3C", "J4R"],
-            icon:""
+            icon:"m-j4l"
         }
 
         export const ABILITY_J4R: Ability = {
@@ -193,7 +193,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_BATTLE_CRY,
             linkedAbilities: ["J4L", "J5R"],
-            icon:""
+            icon:"m-j4r"
         }
 
         export const ABILITY_J5R: Ability = {
@@ -203,7 +203,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_KEEP_COOL,
             linkedAbilities: ["J4R","C5C"],
-            icon:""
+            icon:"m-j5r"
         }
     }
 
@@ -217,7 +217,7 @@ export namespace AbilitiesJob {
             modifiers: {"ATH":5,"DDG":5},
             embededCapacity: null,
             linkedAbilities: ["J2C"],
-            icon:""
+            icon:"r-j1c"
         }
 
         export const ABILITY_J2C: Ability = {
@@ -227,7 +227,7 @@ export namespace AbilitiesJob {
             modifiers: {"PCP":10},
             embededCapacity: null,
             linkedAbilities: ["J1C", "J3C"],
-            icon:""
+            icon:"r-j2c"
         }
 
         export const ABILITY_J3C: Ability = {
@@ -237,7 +237,7 @@ export namespace AbilitiesJob {
             modifiers: {"PRP":10},
             embededCapacity: null,
             linkedAbilities: ["J2C", "J4L"],
-            icon:""
+            icon:"r-j3c"
         }
 
         export const ABILITY_J4L: Ability = {
@@ -247,7 +247,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_BURST_SHOOTING,
             linkedAbilities: ["J3C", "J4R"],
-            icon:""
+            icon:"r-j4l"
         }
 
         export const ABILITY_J4R: Ability = {
@@ -257,7 +257,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: null,
             linkedAbilities: ["J4L", "J5R"],
-            icon:""
+            icon:"r-j4r"
         }
 
         export const ABILITY_J5R: Ability = {
@@ -267,7 +267,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_CUSTOM_AMMOS,
             linkedAbilities: ["J4R"],
-            icon:""
+            icon:"r-j5r"
         }
     }
 
@@ -280,7 +280,7 @@ export namespace AbilitiesJob {
             modifiers: {"ATH":5,"DDG":5},
             embededCapacity: null,
             linkedAbilities: ["J2C"],
-            icon:""
+            icon:"s-j1c"
         }
 
         export const ABILITY_J2C: Ability = {
@@ -290,7 +290,7 @@ export namespace AbilitiesJob {
             modifiers: {"PCP":10, "SNK":10},
             embededCapacity: null,
             linkedAbilities: ["J1C", "J3L", "C2L"],
-            icon:""
+            icon:"s-j2c"
         }
 
         export const ABILITY_J3L: Ability = {
@@ -300,7 +300,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_PRESTO_ALLEGRO,
             linkedAbilities: ["J2C"],
-            icon:""
+            icon:"s-j3l"
         }
 
         export const ABILITY_J3R: Ability = {
@@ -310,7 +310,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: null,
             linkedAbilities: ["C2C", "J4R"],
-            icon:""
+            icon:"s-j3r"
         }
 
         export const ABILITY_J4R: Ability = {
@@ -320,7 +320,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_TEAM_COORDINATION,
             linkedAbilities: ["J3R", "J5R"],
-            icon:""
+            icon:"s-j4r"
         }
 
         export const ABILITY_J5R: Ability = {
@@ -330,7 +330,7 @@ export namespace AbilitiesJob {
             modifiers: {"PRP":10, "BRV":10},
             embededCapacity: null,
             linkedAbilities: ["J4R", "C5C"],
-            icon:""
+            icon:"s-j5r"
         }
     }
 }
@@ -355,7 +355,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_ALCHEMIC_SCIENCES,
             linkedAbilities: ["R2L"],
-            icon:""
+            icon:"v-r1c"
         }
 
         export const ABILITY_R2L: Ability = {
@@ -365,7 +365,7 @@ export namespace AbilitiesRace {
             modifiers: {"KNH-MEC":20, "STL":10},
             embededCapacity: null,
             linkedAbilities: ["R1C", "C2R","R3L", "R3R"],
-            icon:""
+            icon:"v-r2l"
         }
 
         export const ABILITY_R3L: Ability = {
@@ -375,7 +375,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_INGENIOUS_MIND,
             linkedAbilities: ["R2L","R4L", "C3R"],
-            icon:""
+            icon:"v-r3l"
         }
 
         export const ABILITY_R3R: Ability = {
@@ -385,7 +385,7 @@ export namespace AbilitiesRace {
             modifiers: {"RES":5, "PRP":5},
             embededCapacity: null,
             linkedAbilities: ["R2L","R4L"],
-            icon:""
+            icon:"v-r3r"
         }
 
         export const ABILITY_R4L: Ability = {
@@ -395,7 +395,7 @@ export namespace AbilitiesRace {
             modifiers: {"SNK":5},
             embededCapacity: null,
             linkedAbilities: ["C4R","R3L","R2R", "R5C"],
-            icon:""
+            icon:"v-r4l"
         }
         
         export const ABILITY_R5C: Ability = {
@@ -405,7 +405,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_DUST_PUPPETEER,
             linkedAbilities: ["R4L"],
-            icon:""
+            icon:"v-r5c"
         }
     }
 
@@ -418,7 +418,7 @@ export namespace AbilitiesRace {
             modifiers: {"RES":5},
             embededCapacity: null,
             linkedAbilities: ["R2L", "R3R"],
-            icon:""
+            icon:"am-r1c"
         }
 
         export const ABILITY_R2L: Ability = {
@@ -428,7 +428,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_DUST_ENCHANTEMENT,
             linkedAbilities: ["C2R","R3L", "R1C"],
-            icon:""
+            icon:"am-r2l"
         }
 
         export const ABILITY_R3L: Ability = {
@@ -438,7 +438,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_EXECUTION,
             linkedAbilities: ["R2L","R4L", "R3R", "C3R"],
-            icon:""
+            icon:"am-r3l"
         }
 
         export const ABILITY_R3R: Ability = {
@@ -448,7 +448,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: null,
             linkedAbilities: ["R1C", "R3L","R5L"],
-            icon:""
+            icon:"am-r3r"
         }
 
         export const ABILITY_R4L: Ability = {
@@ -458,7 +458,7 @@ export namespace AbilitiesRace {
             modifiers: {"ITM":5, "PRS":5},
             embededCapacity: null,
             linkedAbilities: ["C4R","R3L", "R5L"],
-            icon:""
+            icon:"am-r4l"
         }
         
         export const ABILITY_R5L: Ability = {
@@ -468,7 +468,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_BURNING_SOUL,
             linkedAbilities: ["C4R","R4L","R3R"],
-            icon:""
+            icon:"am-r5l"
         }
     }
 
@@ -481,7 +481,7 @@ export namespace AbilitiesRace {
             modifiers: {"RES":5},
             embededCapacity: null,
             linkedAbilities: ["R2L", "R3R"],
-            icon:""
+            icon:"d-r1c"
         }
 
         export const ABILITY_R2L: Ability = {
@@ -491,7 +491,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_INTIMIDATING_CRY,
             linkedAbilities: ["R1C", "C1C","C2R","R4L"],
-            icon:""
+            icon:"d-r2l"
         }
 
         export const ABILITY_R3R: Ability = {
@@ -501,7 +501,7 @@ export namespace AbilitiesRace {
             modifiers: {"KNL-AUR":10, "ETQ":10},
             embededCapacity: CapacitiesCommons.CAPACITY_EXECUTION,
             linkedAbilities: ["R1C","R4L", "R5R"],
-            icon:""
+            icon:"d-r3r"
         }
 
         export const ABILITY_R4L: Ability = {
@@ -511,7 +511,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_FEDERATION_INFLUENCE,
             linkedAbilities: ["C3R","R2L","R3R", "R5R", "R5L"],
-            icon:""
+            icon:"d-r4l"
         }
         
         export const ABILITY_R5L: Ability = {
@@ -521,7 +521,7 @@ export namespace AbilitiesRace {
             modifiers: {"KNL-END":20},
             embededCapacity: null,
             linkedAbilities: ["R4L","C4R"],
-            icon:""
+            icon:"d-r5l"
         }
 
         export const ABILITY_R5R: Ability = {
@@ -531,7 +531,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_BURNING_SOUL,
             linkedAbilities: ["R4L","R3R"],
-            icon:""
+            icon:"d-r5r"
         }
     }
 
@@ -544,7 +544,7 @@ export namespace AbilitiesRace {
             modifiers: {"BRV":5, "ETQ":5},
             embededCapacity: null,
             linkedAbilities: ["R3R"],
-            icon:""
+            icon:"som-r1c"
         }
 
         export const ABILITY_R2L: Ability = {
@@ -554,7 +554,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_SISTERS_BLESSING,
             linkedAbilities: ["C1C", "C2R","R3R"],
-            icon:""
+            icon:"som-r2l"
         }
 
         export const ABILITY_R3R: Ability = {
@@ -564,7 +564,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_ESPRIT_DE_CORPS,
             linkedAbilities: ["R1C","R2L", "R4C","R5R"],
-            icon:""
+            icon:"som-r3r"
         }
 
         export const ABILITY_R4C: Ability = {
@@ -574,7 +574,7 @@ export namespace AbilitiesRace {
             modifiers: {"RES":5},
             embededCapacity: null,
             linkedAbilities: ["C3R","R3R", "R5R", "R5L"],
-            icon:""
+            icon:"som-r4c"
         }
         
         export const ABILITY_R5L: Ability = {
@@ -584,7 +584,7 @@ export namespace AbilitiesRace {
             modifiers: {"KNH-FSA":10,"PRP":10},
             embededCapacity: null,
             linkedAbilities: ["R4C","C4R"],
-            icon:""
+            icon:"som-r5l"
         }
 
         export const ABILITY_R5R: Ability = {
@@ -594,7 +594,7 @@ export namespace AbilitiesRace {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_NO_MERCY_MISERICORD,
             linkedAbilities: ["R4C","R3R"],
-            icon:""
+            icon:"som-r5r"
         }
     }
 }
