@@ -19,8 +19,6 @@ export class CharacterSheetComponent implements OnInit {
 
   character: Character; // character to display
   
-  racesList: Race[]; //used in the dropdown menu
-  jobsList: Job[];
   materialList: ItemManagement.Material[];
   abilitiesCommonsList: Ability[];
 
@@ -39,8 +37,6 @@ export class CharacterSheetComponent implements OnInit {
 
     this.character = this.characterSheetManagementService.getCharacterSheet(characterId);
 
-    this.racesList = this.rulesService.getRacesList();
-    this.jobsList = this.rulesService.getJobsList();
     this.materialList = this.rulesService.getMaterialsList();
     this.abilitiesCommonsList = this.rulesService.getAbilitiesCommonsList();
   }

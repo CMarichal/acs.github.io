@@ -8,6 +8,7 @@ import { CharacterSheetComponent } from './components/character-sheet/character-
 import { HomeComponent } from './components/home/home.component';
 import { ModifierPipe } from './pipes/modifier.pipe';
 import { DisplayModifierPipe } from './pipes/display-modifier.pipe';
+import { CreateCharacterComponent } from './components/create-character/create-character.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DisplayModifierPipe } from './pipes/display-modifier.pipe';
     CharacterSheetComponent,
     HomeComponent,
     ModifierPipe,
-    DisplayModifierPipe
+    DisplayModifierPipe,
+    CreateCharacterComponent
   ],
   imports: [
     BrowserModule,

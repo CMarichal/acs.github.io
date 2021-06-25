@@ -1,0 +1,42 @@
+
+<div class="container create-menu">
+    <h1 class="create-title">Création d'un personnage</h1>
+    <table>
+        <thead>
+            <td></td>
+            <td></td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="name">Name</label>
+                </td>
+                <td>
+                    <input id="name" [(ngModel)]="characterName">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="race">Race</label>
+                </td>
+                <td>
+                    <select name="race" [(ngModel)]="characterRace" id="race">
+                        <option *ngFor="let race of racesList" [ngValue]="race">{{race.name}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="job">Classe</label>
+                </td>
+                <td>
+                    <select name="job" [(ngModel)]="characterJob" id="job">
+                        <option *ngFor="let job of jobsList" [ngValue]="job">{{job.name}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="onClickValidateButton()">Valider</button>
+    
+</div>

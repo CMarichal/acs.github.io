@@ -180,6 +180,9 @@ export const testCharacters: Character[] = [
         inventory: [],
         weapons: [],
         armor: [],
-        capacities: []
+        capacities: [],
+        abilitiesCommon: [],
+        abilitiesJob: [],
+        abilitiesRace: []
     }
 ]

@@ -41,15 +41,7 @@
                         <span class="info info__race">Race </span>
                     </td>
                     <td>
-                        <span *ngIf="!editMode; else elseBlockRace">
-                            {{character.race.name}}
-                        </span>
-                        <ng-template #elseBlockRace>
-                            <label for="race"></label>
-                            <select name="race" [(ngModel)]="character.race" id="race">
-                                <option *ngFor="let race of racesList" [ngValue]="race">{{race.name}}</option>
-                            </select>
-                        </ng-template>
+                        {{character.race.name}}
                     </td>
                 </tr>
             </tbody>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from 'model/character';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private characterSheetManagementService: CharacterSheetManagementService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,13 +35,14 @@ export class HomeComponent implements OnInit {
               var contents = e.target.result;
               var character: Character = JSON.parse(contents.toString());
               this.characterSheetManagementService.importCharacterSheet(character);
+              this.router.navigate(['character-sheet', character.id]);
           };
           readFile.readAsText(this.uploadedFile);
       }
   }
 
   onClickCreateButton() {
-    this.characterSheetManagementService.createCharacter();
+    this.router.navigate(['create-character']);
   }
 
 

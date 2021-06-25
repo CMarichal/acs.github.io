@@ -87,6 +87,7 @@ export namespace Races {
     export const RacesList: Race[] = [
         RACE_VAULTERS,
         RACE_BROKEN_LORDS,
+        RACE_ARDENT_MAGES,
         RACE_DRAKKEN,
         RACE_FORGOTTENS,
         RACE_KAPAKU,

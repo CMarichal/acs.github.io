@@ -4,6 +4,7 @@ import { ItemManagement } from "./item";
 import { HealthStatus, HealthStatuses } from "./healthStatus";
 import { Stats } from "./stats";
 import { Capacity } from "./capacities";
+import { Ability } from "./abilities";
 
 export class Character {
     
@@ -30,6 +31,10 @@ export class Character {
     inventory: ItemManagement.Item[] = [];
 
     capacities: Capacity[] = [];
+
+    abilitiesCommon: Ability[] = [];
+    abilitiesJob: Ability[] = [];
+    abilitiesRace: Ability[] = [];
 
     constructor(
         name: string, 
