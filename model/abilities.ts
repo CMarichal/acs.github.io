@@ -11,7 +11,16 @@ export class Ability {
     icon: string="";
 }
 
+export class CharacterAbility {
+    content: Ability;
+    isActivated: boolean = false;
+    isUnlocked: boolean = false;
 
+    constructor(ability: Ability)
+    {
+        this.content = ability;
+    }
+}
 
 export namespace AbilitiesCommons {
     export const ABILITY_C1C: Ability = {

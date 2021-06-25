@@ -4,6 +4,8 @@ import { Character } from 'model/character';
 import {Router} from "@angular/router"
 import { Race, Races } from 'model/race';
 import { Job, Jobs } from 'model/job';
+import { RulesService } from './rules.service';
+import { CharacterAbility } from 'model/abilities';
 
 
 @Injectable({
@@ -13,7 +15,10 @@ export class CharacterSheetManagementService {
 
   characterSheets: Character[] = testCharacters;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private rulesService: RulesService
+    ) { }
 
   getAllCharacterSheets() {
     return this.characterSheets;
@@ -21,6 +26,20 @@ export class CharacterSheetManagementService {
 
   createCharacter(name:string, race: Race, job: Job): Character {
     var newCharacter = new Character(name, race, job);
+
+    for (let ability of this.rulesService.getAbilitiesCommonsList())
+    {
+      newCharacter.abilitiesCommon.push(new CharacterAbility(ability));
+    }
+    for (let ability of race.abilities)
+    {
+      newCharacter.abilitiesRace.push(new CharacterAbility(ability));
+    }
+    for (let ability of job.abilities)
+    {
+      newCharacter.abilitiesJob.push(new CharacterAbility(ability));
+    }
+
     this.characterSheets.push(newCharacter);
     return newCharacter;
   }

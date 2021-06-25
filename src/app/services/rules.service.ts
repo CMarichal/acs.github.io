@@ -4,7 +4,7 @@ import { Job, Jobs } from 'model/job';
 import { Character } from 'model/character';
 import { Stats, SimpleStats } from 'model/stats';
 import { MaterialCommons } from 'data/materialsBDD';
-import { AbilitiesCommons } from 'model/abilities';
+import { AbilitiesCommons, Ability } from 'model/abilities';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,11 @@ export class RulesService {
 
   constructor() { }
 
-  getRacesList()
+  getRacesList(): Race[]
   {
     return this.racesList;
   }
-  getJobsList()
+  getJobsList(): Job[]
   {
     return this.jobsList;
   }
@@ -30,10 +30,11 @@ export class RulesService {
   {
     return this.materialList;
   }
-  getAbilitiesCommonsList()
+  getAbilitiesCommonsList(): Ability[]
   {
     return this.abilitiesCommonsList;
   }
+  
   updateModifiers(character: Character) {
 
     // var equipementStats

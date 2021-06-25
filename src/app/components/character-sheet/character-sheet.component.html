@@ -623,23 +623,25 @@
             </div>
         </div>
 
-        <h3>Classe</h3>
+        <h3 class=" table__abilities-job">Classe - {{character.job.name}}</h3>
         <table class="table">
-            <thead>
+            <thead >
                 <th></th>
                 <th>Aptitude</th>
                 <th>Effets</th>
             </thead>
             <tbody>
-                <tr *ngFor="let ability of character.job.abilities">
-                    <td><img src="assets/abilities-icons/{{ability.icon}}.png" width="75"/></td>
-                    <td>{{ability.name}}</td>
-                    <td>{{ability.effects}}</td>
+                <tr *ngFor="let ability of character.abilitiesJob" 
+                [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
+                            'table-dark':ability.isUnlocked && !ability.isActivated}">
+                    <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
+                    <td class="ability__name">{{ability.content.name}}</td>
+                    <td>{{ability.content.effects}}</td>
                 </tr>
             </tbody>
         </table>
 
-        <h3>Commun</h3>
+        <h3 class=" table__abilities-common">Commun</h3>
         <table class="table">
             <thead>
                 <th></th>
@@ -647,15 +649,17 @@
                 <th>Effets</th>
             </thead>
             <tbody>
-                <tr *ngFor="let ability of abilitiesCommonsList">
-                    <td><img src="assets/abilities-icons/{{ability.icon}}.png" width="75"/></td>
-                    <td>{{ability.name}}</td>
-                    <td>{{ability.effects}}</td>
+                <tr *ngFor="let ability of character.abilitiesCommon" 
+                [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
+                'table-dark':ability.isUnlocked && !ability.isActivated}">
+                    <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
+                    <td class="ability__name">{{ability.content.name}}</td>
+                    <td>{{ability.content.effects}}</td>
                 </tr>
             </tbody>
         </table>
 
-        <h3>Race</h3>
+        <h3 class="table__abilities-race">Race - {{character.race.name}}</h3>
         <table class="table">
             <thead>
                 <th></th>
@@ -663,10 +667,12 @@
                 <th>Effets</th>
             </thead>
             <tbody>
-                <tr *ngFor="let ability of character.race.abilities">
-                    <td><img src="assets/abilities-icons/{{ability.icon}}.png" width="75"/></td>
-                    <td>{{ability.name}}</td>
-                    <td>{{ability.effects}}</td>
+                <tr *ngFor="let ability of character.abilitiesRace" 
+                [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
+                            'table-dark':ability.isUnlocked && !ability.isActivated}">
+                    <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
+                    <td class="ability__name">{{ability.content.name}}</td>
+                    <td>{{ability.content.effects}}</td>
                 </tr>
             </tbody>
         </table>

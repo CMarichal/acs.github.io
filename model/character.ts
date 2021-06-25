@@ -4,7 +4,7 @@ import { ItemManagement } from "./item";
 import { HealthStatus, HealthStatuses } from "./healthStatus";
 import { Stats } from "./stats";
 import { Capacity } from "./capacities";
-import { Ability } from "./abilities";
+import { Ability, CharacterAbility } from "./abilities";
 
 export class Character {
     
@@ -32,9 +32,9 @@ export class Character {
 
     capacities: Capacity[] = [];
 
-    abilitiesCommon: Ability[] = [];
-    abilitiesJob: Ability[] = [];
-    abilitiesRace: Ability[] = [];
+    abilitiesCommon: CharacterAbility[] = [];
+    abilitiesJob: CharacterAbility[] = [];
+    abilitiesRace: CharacterAbility[] = [];
 
     constructor(
         name: string, 
