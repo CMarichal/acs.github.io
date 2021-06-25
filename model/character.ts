@@ -3,13 +3,7 @@ import { Job } from "./job";
 import { ItemManagement } from "./item";
 import { HealthStatus, HealthStatuses } from "./healthStatus";
 import { Stats } from "./stats";
-
-
-class Capacity {
-    name: string="";
-    effect: string="";
-    difficulty: number=0;
-}
+import { Capacity } from "./capacities";
 
 export class Character {
     

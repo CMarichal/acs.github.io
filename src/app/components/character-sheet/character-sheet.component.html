@@ -567,10 +567,42 @@
                 <th>Nom</th>
                 <th>Effets</th>
                 <th>Difficulté</th>
+                <th *ngIf="editMode">
+                    <button class="btn btn-secondary" (click)="onClickAddCapacity()">+</button>
+                </th>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
+                <tr *ngFor="let capacity of character.capacities">
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockCapacityName">
+                            {{capacity.name}}
+                        </span>
+                        <ng-template #elseBlockCapacityName>
+                            <label for="capacityName{{capacity.id}}"></label>
+                            <input id="capacityName{{capacity.id}}" [(ngModel)]="capacity.name">
+                        </ng-template>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockCapacityEffects">
+                            {{capacity.effects}}
+                        </span>
+                        <ng-template #elseBlockCapacityEffects>
+                            <label for="capacityEffects{{capacity.id}}"></label>
+                            <input id="capacityEffects{{capacity.id}}" [(ngModel)]="capacity.effects">
+                        </ng-template>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockCapacityDifficulty">
+                            {{capacity.difficulty}}
+                        </span>
+                        <ng-template #elseBlockCapacityDifficulty>
+                            <label for="capacityDifficulty{{capacity.id}}"></label>
+                            <input type="number" id="capacityDifficulty{{capacity.id}}" [(ngModel)]="capacity.difficulty">
+                        </ng-template>
+                    </td>
+                    <td *ngIf="editMode">
+                        <button class="btn btn-danger" (click)="onClickDeleteCapacity(capacity.id)">-</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

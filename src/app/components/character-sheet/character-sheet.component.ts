@@ -7,6 +7,7 @@ import { Job } from 'model/job';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 import { RulesService } from '../../services/rules.service';
 import { ItemManagement } from 'model/item';
+import { Capacity } from 'model/capacities';
 
 @Component({
   selector: 'app-character-sheet',
@@ -59,9 +60,14 @@ export class CharacterSheetComponent implements OnInit {
     this.characterSheetManagementService.exportCharacterSheet(this.character);
   }
 
+  // HEALTH STATUS MANAGEMENT
+
   onHealthStatusChange() {
     this.rulesService.updateModifiers(this.character);
   }
+
+
+  // ITEM MANAGEMENT
 
   onClickAddWeapon() {
     var newWeapon = new ItemManagement.Weapon();
@@ -91,6 +97,18 @@ export class CharacterSheetComponent implements OnInit {
 
   onClickDeleteItem(id: number) {
     this.character.inventory.splice(id);
+  }
+
+  // CAPACITY MANAGEMENT 
+
+  onClickAddCapacity() {
+    var newCapacity = new Capacity();
+    newCapacity.id = this.character.capacities.length;
+    this.character.capacities.push(newCapacity);
+  }
+
+  onClickDeleteCapacity(id: number) {
+    this.character.capacities.splice(id);
   }
 
 }
