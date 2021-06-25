@@ -629,6 +629,7 @@
                 <th></th>
                 <th>Aptitude</th>
                 <th>Effets</th>
+                <th *ngIf="editMode"></th>
             </thead>
             <tbody>
                 <tr *ngFor="let ability of character.abilitiesJob" 
@@ -637,6 +638,12 @@
                     <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
                     <td class="ability__name">{{ability.content.name}}</td>
                     <td>{{ability.content.effects}}</td>
+                    <td *ngIf="editMode && ability.isUnlocked && !ability.isActivated">
+                        <button class="btn btn-success" (click)="onClickActivateAbility(ability)">Activer</button>
+                    </td>
+                    <td *ngIf="editMode && ability.isActivated">
+                        <button class="btn btn-danger" (click)="onClickDeactivateAbility(ability)">Désactiver</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -647,6 +654,7 @@
                 <th></th>
                 <th>Aptitude</th>
                 <th>Effets</th>
+                <th *ngIf="editMode"></th>
             </thead>
             <tbody>
                 <tr *ngFor="let ability of character.abilitiesCommon" 
@@ -655,6 +663,12 @@
                     <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
                     <td class="ability__name">{{ability.content.name}}</td>
                     <td>{{ability.content.effects}}</td>
+                    <td *ngIf="editMode && ability.isUnlocked && !ability.isActivated">
+                        <button class="btn btn-success" (click)="onClickActivateAbility(ability)">Activer</button>
+                    </td>
+                    <td *ngIf="editMode && ability.isActivated">
+                        <button class="btn btn-danger" (click)="onClickDeactivateAbility(ability)">Désactiver</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -665,6 +679,7 @@
                 <th></th>
                 <th>Aptitude</th>
                 <th>Effets</th>
+                <th *ngIf="editMode"></th>
             </thead>
             <tbody>
                 <tr *ngFor="let ability of character.abilitiesRace" 
@@ -673,6 +688,12 @@
                     <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
                     <td class="ability__name">{{ability.content.name}}</td>
                     <td>{{ability.content.effects}}</td>
+                    <td *ngIf="editMode && ability.isUnlocked && !ability.isActivated">
+                        <button class="btn btn-success" (click)="onClickActivateAbility(ability)">Activer</button>
+                    </td>
+                    <td *ngIf="editMode && ability.isActivated">
+                        <button class="btn btn-danger" (click)="onClickDeactivateAbility(ability)">Désactiver</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

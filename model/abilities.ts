@@ -39,7 +39,7 @@ export namespace AbilitiesCommons {
         effects: "+10 à une compétence de Vigueur qui n’est pas votre meilleure compétence de la catégorie",
         modifiers: {},
         embededCapacity: null,
-        linkedAbilities: ["C1L", "J2C", "C3L", "C3C"],
+        linkedAbilities: ["C1C", "J2C", "C3L", "C3C"],
         icon:"c2l"
     }
 

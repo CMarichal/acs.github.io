@@ -8,7 +8,7 @@ import { CharacterSheetManagementService } from '../../services/character-sheet-
 import { RulesService } from '../../services/rules.service';
 import { ItemManagement } from 'model/item';
 import { Capacity } from 'model/capacities';
-import { Ability } from 'model/abilities';
+import { Ability, CharacterAbility } from 'model/abilities';
 
 @Component({
   selector: 'app-character-sheet',
@@ -108,6 +108,16 @@ export class CharacterSheetComponent implements OnInit {
 
   onClickDeleteCapacity(id: number) {
     this.character.capacities.splice(id);
+  }
+
+  // ABILITY MANAGEMENT
+
+  onClickActivateAbility(ability: CharacterAbility) {
+    this.rulesService.activateAbility(this.character, ability);
+  }
+
+  onClickDeactivateAbility(ability: CharacterAbility) {
+    this.rulesService.deactivateAbility(this.character, ability);
   }
 
 }

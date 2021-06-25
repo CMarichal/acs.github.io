@@ -39,6 +39,9 @@ export class CharacterSheetManagementService {
     {
       newCharacter.abilitiesJob.push(new CharacterAbility(ability));
     }
+    newCharacter.abilitiesCommon[0].isUnlocked = true;
+    newCharacter.abilitiesJob[0].isUnlocked = true;
+    newCharacter.abilitiesRace[0].isUnlocked = true;
 
     this.characterSheets.push(newCharacter);
     return newCharacter;

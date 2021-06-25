@@ -4,7 +4,7 @@ import { Job, Jobs } from 'model/job';
 import { Character } from 'model/character';
 import { Stats, SimpleStats } from 'model/stats';
 import { MaterialCommons } from 'data/materialsBDD';
-import { AbilitiesCommons, Ability } from 'model/abilities';
+import { AbilitiesCommons, Ability, CharacterAbility } from 'model/abilities';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,43 @@ export class RulesService {
   getAbilitiesCommonsList(): Ability[]
   {
     return this.abilitiesCommonsList;
+  }
+
+  activateAbility(character:Character, ability: CharacterAbility) 
+  {
+    ability.isActivated = true;
+    
+    var totalAbilities = [character.abilitiesCommon, character.abilitiesJob, character.abilitiesRace];
+
+    // exterior to interior
+    for (var abilityList of totalAbilities)
+    {
+      for (var otherAbility of abilityList)
+      {
+        // checking if other abilities are linked to the one that just got activated
+        if (otherAbility.content.linkedAbilities.indexOf(ability.content.key) > -1)
+        {
+          let idx = abilityList.findIndex(ab=>ab.content.key == otherAbility.content.key);
+          abilityList[idx].isUnlocked = true;
+        }
+      }
+    }
+
+    //interior to exterior
+
+  }
+
+  deactivateAbility(character:Character, ability: CharacterAbility) {
+    ability.isActivated = false;
+
+    var totalAbilities = [character.abilitiesCommon, character.abilitiesJob, character.abilitiesRace];
+    var exceptions = ["C1C","R1C","J1C"];
+
+    for (var abilityList of totalAbilities) {
+      for (var otherAbility of abilityList) {
+          // ?
+      }
+    }
   }
   
   updateModifiers(character: Character) {
