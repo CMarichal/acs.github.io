@@ -12,6 +12,7 @@ export namespace ItemManagement {
     export abstract class Material {
         name: string;
         modifier: number;
+        icon: string;
     }
     
     export class MaterialUnknown extends Material {

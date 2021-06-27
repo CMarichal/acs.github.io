@@ -452,7 +452,7 @@
                      </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockWeaponMaterial">
-                            {{weapon.material.name}}
+                            <img src="assets/materials-icons/{{weapon.material.icon}}.png" width=15/> {{weapon.material.name}}
                         </span>
                         <ng-template #elseBlockWeaponMaterial>
                             <label for="weapon{{weapon.id}}material"></label>
@@ -514,7 +514,7 @@
                      </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockArmorMaterial">
-                            {{armor.material.name}}
+                            <img src="assets/materials-icons/{{armor.material.icon}}.png" width=15/> {{armor.material.name}}
                         </span>
                         <ng-template #elseBlockArmorMaterial>
                             <label for="armor{{armor.id}}material"></label>
