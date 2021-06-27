@@ -79,7 +79,7 @@ export namespace AbilitiesCommons {
         effects: "+10 à une compétence de Dextérité qui n’est pas votre meilleure compétence de la catégorie",
         modifiers: {},
         embededCapacity: null,
-        linkedAbilities: ["C2R", "J2L", "J4L"],
+        linkedAbilities: ["C2R", "C4C", "C4R", "J4L"],
         icon:"c3r"
     }
 

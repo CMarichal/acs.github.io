@@ -35,13 +35,14 @@ export class RulesService {
     return this.abilitiesCommonsList;
   }
 
-  activateAbility(character:Character, ability: CharacterAbility) 
-  {
-    ability.isActivated = true;
-    
+
+  // get all the linked abilities on the ability graph
+  // is aware of the unidirectional problem
+  private getAllLinkedAbilities(character:Character, ability: CharacterAbility): CharacterAbility[] {
     var totalAbilities = [character.abilitiesCommon, character.abilitiesJob, character.abilitiesRace];
 
-    // exterior to interior
+    var linkedAbilities: CharacterAbility[] = [];
+
     for (var abilityList of totalAbilities)
     {
       for (var otherAbility of abilityList)
@@ -49,26 +50,49 @@ export class RulesService {
         // checking if other abilities are linked to the one that just got activated
         if (otherAbility.content.linkedAbilities.indexOf(ability.content.key) > -1)
         {
-          let idx = abilityList.findIndex(ab=>ab.content.key == otherAbility.content.key);
-          abilityList[idx].isUnlocked = true;
+         linkedAbilities.push(otherAbility);
+        }
+
+        //checking id the ability is linked to that other ability
+        if (ability.content.linkedAbilities.find(key => key == otherAbility.content.key) != undefined)
+        {
+          linkedAbilities.push(otherAbility);
         }
       }
     }
 
-    //interior to exterior
-
+    return linkedAbilities;
   }
 
-  deactivateAbility(character:Character, ability: CharacterAbility) {
+  activateAbility(character:Character, ability: CharacterAbility): void 
+  {
+    ability.isActivated = true;
+ 
+    for (var linkedCharacterAbility of this.getAllLinkedAbilities(character, ability))
+    {
+      linkedCharacterAbility.isUnlocked = true;
+    }
+  }
+
+  deactivateAbility(character:Character, ability: CharacterAbility): void 
+  {
     ability.isActivated = false;
 
-    var totalAbilities = [character.abilitiesCommon, character.abilitiesJob, character.abilitiesRace];
     var exceptions = ["C1C","R1C","J1C"];
 
-    for (var abilityList of totalAbilities) {
-      for (var otherAbility of abilityList) {
-          // ?
+    for (var linkedCharacterAbility of this.getAllLinkedAbilities(character, ability))
+    { 
+      if (exceptions.find(key => linkedCharacterAbility.content.key == key) != undefined){
+        break;
       }
+
+      var distantLinkedAbility = this.getAllLinkedAbilities(character, linkedCharacterAbility);
+      // at least one unlocked
+      if (distantLinkedAbility.find(ab => ab.isActivated) != undefined)
+      {
+        break;
+      }
+      linkedCharacterAbility.isUnlocked = false;
     }
   }
   
@@ -78,6 +102,7 @@ export class RulesService {
     
     // character.stats.vigor.athletics.modifier = character.healthStatus.malus + character.
   }
+
 
   private applyModifiers(statsCharacter: Stats, statsToApply: SimpleStats) {
     for (let statKey in statsToApply) {
