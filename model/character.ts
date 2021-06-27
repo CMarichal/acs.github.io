@@ -45,4 +45,5 @@ export class Character {
         this.race = race;
         this.job = job;
     }
+
 }

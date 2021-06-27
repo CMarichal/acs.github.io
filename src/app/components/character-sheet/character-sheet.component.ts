@@ -17,6 +17,10 @@ import { Skill } from 'model/stats';
 export class CharacterSheetComponent implements OnInit {
 
   character: Character; // character to display
+  characterVigorSkills: Skill[];
+  characterDexteritySkills: Skill[];
+  characterIntelligenceSkills: Skill[];
+  characterCharismaSkills: Skill[];
   
   materialList: ItemManagement.Material[];
   abilitiesCommonsList: Ability[];
@@ -35,9 +39,39 @@ export class CharacterSheetComponent implements OnInit {
     var characterId = this.route.snapshot.params.id;
 
     this.character = this.characterSheetManagementService.getCharacterSheet(characterId);
+    this.loadSkillsCharacter();
 
     this.materialList = this.rulesService.getMaterialsList();
     this.abilitiesCommonsList = this.rulesService.getAbilitiesCommonsList();
+  }
+
+  private loadSkillsCharacter(): void {
+    this.characterVigorSkills = [
+      this.character.stats.vigor.athletics,
+      this.character.stats.vigor.intimidation,
+      this.character.stats.vigor.melee,
+      this.character.stats.vigor.resistance
+    ];
+    this.characterDexteritySkills = [
+      this.character.stats.dexterity.sneak,
+      this.character.stats.dexterity.dodge,
+      this.character.stats.dexterity.throw,
+      this.character.stats.dexterity.stealth
+    ];
+    this.characterIntelligenceSkills = [
+      this.character.stats.intelligence.knowledge]
+      .concat(this.character.stats.intelligence.knowledges)
+      .concat([
+       this.character.stats.intelligence.perception,
+       this.character.stats.intelligence.preparation,
+       this.character.stats.intelligence.knowHow])
+      .concat(this.character.stats.intelligence.knowHows);
+    this.characterCharismaSkills = [
+      this.character.stats.charisma.persuasion,
+      this.character.stats.charisma.leadership,
+      this.character.stats.charisma.bravery,
+      this.character.stats.charisma.etiquette
+    ];
   }
 
   onClickEditButton()  {
@@ -72,6 +106,8 @@ export class CharacterSheetComponent implements OnInit {
     newKnowledge.name = "";
     newKnowledge.key = "KNL-CUSTOM-"+this.character.stats.intelligence.knowledges.length;
     this.character.stats.intelligence.knowledges.push(newKnowledge);
+    this.characterIntelligenceSkills.push(newKnowledge);
+    this.loadSkillsCharacter();
   }
 
   onClickAddKnowHow() {
@@ -80,16 +116,19 @@ export class CharacterSheetComponent implements OnInit {
     newKnowHow.name = "";
     newKnowHow.key = "KNH-CUSTOM-"+this.character.stats.intelligence.knowHows.length;
     this.character.stats.intelligence.knowHows.push(newKnowHow);
+    this.loadSkillsCharacter();
   }
 
   onClickDeleteKnowledge(knowledgeKey: string) {
     var id = this.character.stats.intelligence.knowledges.findIndex(skill => knowledgeKey == skill.key);
-    this.character.stats.intelligence.knowledges.splice(id);
+    this.character.stats.intelligence.knowledges.splice(id, 1);
+    this.loadSkillsCharacter();
   }
 
   onClickDeleteKnowHow(knowHowKey: string) {
     var id = this.character.stats.intelligence.knowHows.findIndex(skill => knowHowKey == skill.key);
-    this.character.stats.intelligence.knowHows.splice(id);
+    this.character.stats.intelligence.knowHows.splice(id, 1);
+    this.loadSkillsCharacter();
   }
 
 
@@ -114,15 +153,15 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   onClickDeleteWeapon(id: number) {
-    this.character.weapons.splice(id);
+    this.character.weapons.splice(id, 1);
   }
 
   onClickDeleteArmor(id: number) {
-    this.character.armor.splice(id);
+    this.character.armor.splice(id, 1);
   }
 
   onClickDeleteItem(id: number) {
-    this.character.inventory.splice(id);
+    this.character.inventory.splice(id, 1);
   }
 
   // CAPACITY MANAGEMENT 
@@ -134,7 +173,7 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   onClickDeleteCapacity(id: number) {
-    this.character.capacities.splice(id);
+    this.character.capacities.splice(id, 1);
   }
 
   // ABILITY MANAGEMENT

@@ -132,7 +132,7 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.vigor.getSkills()">
+                        <tr *ngFor="let skill of characterVigorSkills">
                             <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
@@ -183,7 +183,7 @@
                         <th>Total</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.dexterity.getSkills()">
+                        <tr *ngFor="let skill of characterDexteritySkills">
                             <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
@@ -235,7 +235,7 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.intelligence.getSkills()">
+                        <tr *ngFor="let skill of characterIntelligenceSkills">
                             <td>
                                 <span *ngIf="skill.name=='Préparation' 
                                             || skill.name=='Perception' 
@@ -250,8 +250,8 @@
                                         <div>
                                             <label for="{{skill.key}}-name"></label>
                                             <input id="{{skill.key}}-name" [(ngModel)]="skill.name">
-                                            <button *ngIf="skill.key.startsWith('KNL-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowledge(skill)">-</button>
-                                            <button *ngIf="skill.key.startsWith('KNH-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowHow(skill)">-</button>
+                                            <button *ngIf="skill.key.startsWith('KNL-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowledge(skill.key)">-</button>
+                                            <button *ngIf="skill.key.startsWith('KNH-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowHow(skill.key)">-</button>
                                         </div>
                                     </ng-template>
                                 </ng-template>
@@ -313,7 +313,7 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.charisma.getSkills()">
+                        <tr *ngFor="let skill of characterCharismaSkills">
                             <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">

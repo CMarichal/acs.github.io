@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { testCharacters } from 'data/testCharacters';
 import { Character } from 'model/character';
-import {Router} from "@angular/router"
-import { Race, Races } from 'model/race';
-import { Job, Jobs } from 'model/job';
+import { Race } from 'model/race';
+import { Job } from 'model/job';
 import { RulesService } from './rules.service';
 import { CharacterAbility } from 'model/abilities';
 
@@ -16,7 +15,6 @@ export class CharacterSheetManagementService {
   characterSheets: Character[] = testCharacters;
 
   constructor(
-    private router: Router,
     private rulesService: RulesService
     ) { }
 
@@ -44,11 +42,13 @@ export class CharacterSheetManagementService {
     newCharacter.abilitiesRace[0].isUnlocked = true;
 
     this.characterSheets.push(newCharacter);
+    this.saveCharacter(newCharacter);
     return newCharacter;
   }
 
   importCharacterSheet(character: Character) {
     this.characterSheets.push(character);
+    this.saveCharacter(character);
   }
 
   exportCharacterSheet(character: Character) {
@@ -60,11 +60,18 @@ export class CharacterSheetManagementService {
   }
 
   getCharacterSheet(id: number) {
-    var character= this.characterSheets.find(sheet => sheet.id==id);
+    var character: Character= this.characterSheets.find(sheet => sheet.id==id);
+    if (character == undefined) {
+      let characterString = sessionStorage.getItem(String(id));
+      if (characterString != null) {
+        character = JSON.parse(characterString)
+      }
+    }
     return character;
   }
 
   saveCharacter(character: Character) {
+    sessionStorage.setItem(String(character.id), JSON.stringify(character));
   }
 
 }
