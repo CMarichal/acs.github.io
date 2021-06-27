@@ -144,10 +144,15 @@
                                 </ng-template>
                             </td>
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -190,10 +195,15 @@
                                 </ng-template>
                             </td>
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -249,10 +259,15 @@
                             </td>
 
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -296,10 +311,15 @@
                                 </ng-template>
                             </td>
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
