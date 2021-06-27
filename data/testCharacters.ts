@@ -117,24 +117,24 @@ export const testCharacters: Character[] = [
                     expert: false,
                     key:"KNH"
                     },
-                knowHows: {
-                    "Charpenterie":{
+                knowHows: [
+                    {
                         name: "Charpenterie",
                         baseValue: 30,
                         modifier: 8,
                         expert: false,
                         key:"KNH-CHP"
                     }
-                },
-                knowledges: {
-                    "Culture d'Auriga": {
+                ],
+                knowledges: [
+                     {
                         name: "Culture d'Auriga",
                         baseValue: 30,
                         modifier: 8,
                         expert: false,
                         key:"KNL-AUR",
-                    }
-                },
+                    }       
+                ],
                 getSkills() {
                     return [this.knowledge].concat(Object.values(this.knowledges))
                     .concat(this.perception)

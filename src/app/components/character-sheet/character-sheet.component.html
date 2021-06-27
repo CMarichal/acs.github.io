@@ -245,8 +245,22 @@
                                     {{skill.name}}
                                 </span>
                                 <ng-template #subskill>
-                                    <span class="subskill">|  {{skill.name}}</span>
+                                    <span *ngIf="!editMode; else elseBlockEditSubskill" class="subskill">|  {{skill.name}}</span>
+                                    <ng-template #elseBlockEditSubskill>
+                                        <div>
+                                            <label for="{{skill.key}}-name"></label>
+                                            <input id="{{skill.key}}-name" [(ngModel)]="skill.name">
+                                            <button *ngIf="skill.key.startsWith('KNL-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowledge(skill)">-</button>
+                                            <button *ngIf="skill.key.startsWith('KNH-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowHow(skill)">-</button>
+                                        </div>
+                                    </ng-template>
                                 </ng-template>
+                                <span *ngIf="editMode && skill.name=='Savoir'">
+                                    <button class="btn btn-secondary" (click)="onClickAddKnowledge()">+</button>
+                                </span>
+                                <span *ngIf="editMode && skill.name=='Savoir-faire'">
+                                    <button class="btn btn-secondary" (click)="onClickAddKnowHow()">+</button>
+                                </span>
                             </td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">

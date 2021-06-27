@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Character } from 'model/character';
 import { HealthStatuses } from 'model/healthStatus';
-import { Race } from 'model/race';
-import { Job } from 'model/job';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 import { RulesService } from '../../services/rules.service';
 import { ItemManagement } from 'model/item';
 import { Capacity } from 'model/capacities';
 import { Ability, CharacterAbility } from 'model/abilities';
+import { Skill } from 'model/stats';
 
 @Component({
   selector: 'app-character-sheet',
@@ -63,6 +62,34 @@ export class CharacterSheetComponent implements OnInit {
 
   onHealthStatusChange() {
     this.rulesService.updateModifiers(this.character);
+  }
+
+  // KNOWHOM & KNOWLEDGE MANAGEMENT
+
+  onClickAddKnowledge() {
+    var newKnowledge = new Skill();
+    newKnowledge.baseValue = this.character.stats.intelligence.knowledge.baseValue;
+    newKnowledge.name = "";
+    newKnowledge.key = "KNL-CUSTOM-"+this.character.stats.intelligence.knowledges.length;
+    this.character.stats.intelligence.knowledges.push(newKnowledge);
+  }
+
+  onClickAddKnowHow() {
+    var newKnowHow = new Skill();
+    newKnowHow.baseValue = this.character.stats.intelligence.knowHow.baseValue;
+    newKnowHow.name = "";
+    newKnowHow.key = "KNH-CUSTOM-"+this.character.stats.intelligence.knowHows.length;
+    this.character.stats.intelligence.knowHows.push(newKnowHow);
+  }
+
+  onClickDeleteKnowledge(knowledgeKey: string) {
+    var id = this.character.stats.intelligence.knowledges.findIndex(skill => knowledgeKey == skill.key);
+    this.character.stats.intelligence.knowledges.splice(id);
+  }
+
+  onClickDeleteKnowHow(knowHowKey: string) {
+    var id = this.character.stats.intelligence.knowHows.findIndex(skill => knowHowKey == skill.key);
+    this.character.stats.intelligence.knowHows.splice(id);
   }
 
 
