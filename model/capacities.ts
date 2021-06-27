@@ -101,7 +101,7 @@ export namespace CapacitiesCommons {
         id: 209,
         isFromAbility: true,
         name: "Coordination d'équipe",
-        effects: "Vous pouvez effectuer vos actions simultanément avec un allié.",
+        effects: "Vous pouvez effectuer vos actions simultanément avec l’allié de votre choix. A choisir au début du combat.",
         modifiers: {},
         difficulty: 0
     }
@@ -128,7 +128,7 @@ export namespace CapacitiesCommons {
         id: 212,
         isFromAbility: true,
         name: "Partage latent",
-        effects: "Soyez aux faits et gestes autour de vous tandis que vous dormez.",
+        effects: "Soyez au courant des faits et gestes autour de vous tandis que vous dormez.",
         modifiers: {},
         difficulty: 0
     }
@@ -191,7 +191,7 @@ export namespace CapacitiesCommons {
         id: 219,
         isFromAbility: true,
         name: "Mise à mort",
-        effects: "La victime est lacérée par de violents flux de brume tranchants. Une fois par combat. Nécessite un tour de préparation.",
+        effects: "Lacérez votre victime avec de violents flux de brume tranchants. Une fois par combat. Nécessite un tour de préparation.",
         modifiers: {},
         difficulty: 65
     }
@@ -227,7 +227,7 @@ export namespace CapacitiesCommons {
         id: 223,
         isFromAbility: true,
         name: "Accords obscurs",
-        effects: "Pour un certain prix, vous pouvez forcer les PNJ non-hostiles à vous vendre leur équipement",
+        effects: "Pour un certain prix, forcez les PNJ non-hostiles à vous vendre leur équipement",
         modifiers: {},
         difficulty: 35
     }
@@ -317,7 +317,7 @@ export namespace CapacitiesCommons {
         id: 233,
         isFromAbility: true,
         name: "Bénédiction des Soeurs",
-        effects: "Renforcez vos pouvoirs curatifs et soignez un allié gravement blessé vers l'état 'Légèrement blessé' sans matériel spécifique.",
+        effects: "Vos pouvoir curatifs sont renforcés et pouvez soigner un allié grièvement blessé sans matériel spécifique.",
         modifiers: {},
         difficulty: 0
     }
@@ -335,7 +335,7 @@ export namespace CapacitiesCommons {
         id: 235,
         isFromAbility: true,
         name: "Miséricorde sans pitié",
-        effects: "Entrez dans une rage de combat jusqu'à sa fin. +15 en Mêlée et Athlétisme, -30 en Esquive et Résistance. Vous ne pouvez épargnez la victime.",
+        effects: "Entrez dans une rage de combat jusqu'à sa fin. (+15 en Mêlée et Athlétisme, -30 en Esquive et Résistance). Vous ne pouvez épargnez la victime.",
         modifiers: {},
         difficulty: 40
     }
