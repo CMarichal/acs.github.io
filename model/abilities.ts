@@ -463,7 +463,7 @@ export namespace AbilitiesRace {
         export const ABILITY_R4L: Ability = {
             key: "R4L",
             name: "Expertise en torture",
-            effects: "+10 en Intimidation et +5 en Persuasion+",
+            effects: "+10 en Intimidation et +5 en Persuasion",
             modifiers: {"ITM":5, "PRS":5},
             embededCapacity: null,
             linkedAbilities: ["C4R","R3L", "R5L"],
