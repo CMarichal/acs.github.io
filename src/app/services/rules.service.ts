@@ -4,6 +4,7 @@ import { Job, Jobs } from 'model/job';
 import { Character } from 'model/character';
 import { Stats, SimpleStats } from 'model/stats';
 import { MaterialCommons } from 'data/materialsBDD';
+import { AbilitiesCommons, Ability, CharacterAbility } from 'model/abilities';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,15 @@ export class RulesService {
   racesList = Races.RacesList;
   jobsList = Jobs.JobList;
   materialList = MaterialCommons.MaterialList;
+  abilitiesCommonsList = AbilitiesCommons.ABILITY_C_LIST;
 
   constructor() { }
 
-  getRacesList()
+  getRacesList(): Race[]
   {
     return this.racesList;
   }
-  getJobsList()
+  getJobsList(): Job[]
   {
     return this.jobsList;
   }
@@ -28,13 +30,79 @@ export class RulesService {
   {
     return this.materialList;
   }
+  getAbilitiesCommonsList(): Ability[]
+  {
+    return this.abilitiesCommonsList;
+  }
 
+
+  // get all the linked abilities on the ability graph
+  // is aware of the unidirectional problem
+  private getAllLinkedAbilities(character:Character, ability: CharacterAbility): CharacterAbility[] {
+    var totalAbilities = [character.abilitiesCommon, character.abilitiesJob, character.abilitiesRace];
+
+    var linkedAbilities: CharacterAbility[] = [];
+
+    for (var abilityList of totalAbilities)
+    {
+      for (var otherAbility of abilityList)
+      {
+        // checking if other abilities are linked to the one that just got activated
+        if (otherAbility.content.linkedAbilities.indexOf(ability.content.key) > -1)
+        {
+         linkedAbilities.push(otherAbility);
+        }
+
+        //checking id the ability is linked to that other ability
+        if (ability.content.linkedAbilities.find(key => key == otherAbility.content.key) != undefined)
+        {
+          linkedAbilities.push(otherAbility);
+        }
+      }
+    }
+
+    return linkedAbilities;
+  }
+
+  activateAbility(character:Character, ability: CharacterAbility): void 
+  {
+    ability.isActivated = true;
+ 
+    for (var linkedCharacterAbility of this.getAllLinkedAbilities(character, ability))
+    {
+      linkedCharacterAbility.isUnlocked = true;
+    }
+  }
+
+  deactivateAbility(character:Character, ability: CharacterAbility): void 
+  {
+    ability.isActivated = false;
+
+    var exceptions = ["C1C","R1C","J1C"];
+
+    for (var linkedCharacterAbility of this.getAllLinkedAbilities(character, ability))
+    { 
+      if (exceptions.find(key => linkedCharacterAbility.content.key == key) != undefined){
+        break;
+      }
+
+      var distantLinkedAbility = this.getAllLinkedAbilities(character, linkedCharacterAbility);
+      // at least one unlocked
+      if (distantLinkedAbility.find(ab => ab.isActivated) != undefined)
+      {
+        break;
+      }
+      linkedCharacterAbility.isUnlocked = false;
+    }
+  }
+  
   updateModifiers(character: Character) {
 
     // var equipementStats
     
     // character.stats.vigor.athletics.modifier = character.healthStatus.malus + character.
   }
+
 
   private applyModifiers(statsCharacter: Stats, statsToApply: SimpleStats) {
     for (let statKey in statsToApply) {

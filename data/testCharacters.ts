@@ -9,7 +9,7 @@ export const testCharacters: Character[] = [
     {
         id:0,
         name:"Bob Morane",
-        race: Races.RACE_BROKEN_LORDS,
+        race: Races.RACE_DRAKKEN,
         job: Jobs.JOB_MELEE,
         subgroup:"Nouvelle Ambre",
         goal:"Tuer le Comte Sanglant",
@@ -48,9 +48,6 @@ export const testCharacters: Character[] = [
                     modifier: +3,
                     expert: false,
                     key:"ITM"
-                    },
-                getSkills() {
-                        return [this.athletics, this.intimidation, this.melee, this.resistance];
                     }
                 },
             dexterity: {
@@ -83,8 +80,7 @@ export const testCharacters: Character[] = [
                     modifier: +3,
                     expert: false,
                     key:"THR"
-                    },
-                    getSkills() {return [this.sneak, this.dodge, this.stealth, this.throw];}
+                    }
                 },  
             intelligence: {
                 pureValue: 53,
@@ -117,31 +113,24 @@ export const testCharacters: Character[] = [
                     expert: false,
                     key:"KNH"
                     },
-                knowHows: {
-                    "Charpenterie":{
+                knowHows: [
+                    {
                         name: "Charpenterie",
                         baseValue: 30,
                         modifier: 8,
                         expert: false,
                         key:"KNH-CHP"
                     }
-                },
-                knowledges: {
-                    "Culture d'Auriga": {
+                ],
+                knowledges: [
+                     {
                         name: "Culture d'Auriga",
                         baseValue: 30,
                         modifier: 8,
                         expert: false,
                         key:"KNL-AUR",
-                    }
-                },
-                getSkills() {
-                    return [this.knowledge].concat(Object.values(this.knowledges))
-                    .concat(this.perception)
-                    .concat(this.preparation)
-                    .concat(this.knowHow)
-                    .concat(Object.values(this.knowHows));
-                }
+                    }       
+                ]
             },
             charisma: {
                 pureValue: 39,
@@ -173,13 +162,15 @@ export const testCharacters: Character[] = [
                     modifier: +3,
                     expert: false,
                     key:"ETQ"
-                    },
-                getSkills() {return [this.persuasion, this.leadership, this.bravery, this.etiquette];}
-                },
+                    }
             },
+        },
         inventory: [],
         weapons: [],
         armor: [],
-        capacities: []
+        capacities: [],
+        abilitiesCommon: [],
+        abilitiesJob: [],
+        abilitiesRace: []
     }
 ]

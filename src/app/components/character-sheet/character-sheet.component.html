@@ -1,4 +1,4 @@
-{{character|json}}
+
 <div class="container card">
     <div class="card-header">
         <h1 class="sheet-title">Fiche personnage</h1>
@@ -41,15 +41,7 @@
                         <span class="info info__race">Race </span>
                     </td>
                     <td>
-                        <span *ngIf="!editMode; else elseBlockRace">
-                            {{character.race.name}}
-                        </span>
-                        <ng-template #elseBlockRace>
-                            <label for="race"></label>
-                            <select name="race" [(ngModel)]="character.race" id="race">
-                                <option *ngFor="let race of racesList" [ngValue]="race">{{race.name}}</option>
-                            </select>
-                        </ng-template>
+                        {{character.race.name}}
                     </td>
                 </tr>
             </tbody>
@@ -140,7 +132,7 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.vigor.getSkills()">
+                        <tr *ngFor="let skill of characterVigorSkills">
                             <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
@@ -152,10 +144,15 @@
                                 </ng-template>
                             </td>
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -186,7 +183,7 @@
                         <th>Total</th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.dexterity.getSkills()">
+                        <tr *ngFor="let skill of characterDexteritySkills">
                             <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
@@ -198,10 +195,15 @@
                                 </ng-template>
                             </td>
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -233,7 +235,7 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.intelligence.getSkills()">
+                        <tr *ngFor="let skill of characterIntelligenceSkills">
                             <td>
                                 <span *ngIf="skill.name=='Préparation' 
                                             || skill.name=='Perception' 
@@ -243,8 +245,22 @@
                                     {{skill.name}}
                                 </span>
                                 <ng-template #subskill>
-                                    <span class="subskill">|  {{skill.name}}</span>
+                                    <span *ngIf="!editMode; else elseBlockEditSubskill" class="subskill">|  {{skill.name}}</span>
+                                    <ng-template #elseBlockEditSubskill>
+                                        <div>
+                                            <label for="{{skill.key}}-name"></label>
+                                            <input id="{{skill.key}}-name" [(ngModel)]="skill.name">
+                                            <button *ngIf="skill.key.startsWith('KNL-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowledge(skill.key)">-</button>
+                                            <button *ngIf="skill.key.startsWith('KNH-CUSTOM')" class="btn btn-danger" (click)="onClickDeleteKnowHow(skill.key)">-</button>
+                                        </div>
+                                    </ng-template>
                                 </ng-template>
+                                <span *ngIf="editMode && skill.name=='Savoir'">
+                                    <button class="btn btn-secondary" (click)="onClickAddKnowledge()">+</button>
+                                </span>
+                                <span *ngIf="editMode && skill.name=='Savoir-faire'">
+                                    <button class="btn btn-secondary" (click)="onClickAddKnowHow()">+</button>
+                                </span>
                             </td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
@@ -257,10 +273,15 @@
                             </td>
 
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -292,7 +313,7 @@
                         <th><em>Total</em></th>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let skill of character.stats.charisma.getSkills()">
+                        <tr *ngFor="let skill of characterCharismaSkills">
                             <td>{{skill.name}}</td>
                             <td>
                                 <span *ngIf="!editMode; else elseBlockSkill">
@@ -304,10 +325,15 @@
                                 </ng-template>
                             </td>
                             <td>
-                                <span class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
+                                <span *ngIf="!editMode; else elseBlockSkillModifier"
+                                class="skill" [ngClass]="{'skill__negative-value':skill.modifier<0,
                                                 'skill__positive-value':skill.modifier>0}">
                                                 {{skill.modifier | modifier}}
                                 </span>
+                                <ng-template #elseBlockSkillModifier>
+                                    <label for="{{skill.name}}-modifier"></label>
+                                    <input class="skill-input" id="{{skill.name}}-modifier" type="number" [(ngModel)]="skill.modifier">
+                                </ng-template>
                             </td>
                             <td class="skill skill__total">{{skill.baseValue + skill.modifier}}</td>
                         </tr>
@@ -426,7 +452,7 @@
                      </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockWeaponMaterial">
-                            {{weapon.material.name}}
+                            <img src="assets/materials-icons/{{weapon.material.icon}}.png" width=15/> {{weapon.material.name}}
                         </span>
                         <ng-template #elseBlockWeaponMaterial>
                             <label for="weapon{{weapon.id}}material"></label>
@@ -488,7 +514,7 @@
                      </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockArmorMaterial">
-                            {{armor.material.name}}
+                            <img src="assets/materials-icons/{{armor.material.icon}}.png" width=15/> {{armor.material.name}}
                         </span>
                         <ng-template #elseBlockArmorMaterial>
                             <label for="armor{{armor.id}}material"></label>
@@ -567,10 +593,42 @@
                 <th>Nom</th>
                 <th>Effets</th>
                 <th>Difficulté</th>
+                <th *ngIf="editMode">
+                    <button class="btn btn-secondary" (click)="onClickAddCapacity()">+</button>
+                </th>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
+                <tr *ngFor="let capacity of character.capacities">
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockCapacityName">
+                            {{capacity.name}}
+                        </span>
+                        <ng-template #elseBlockCapacityName>
+                            <label for="capacityName{{capacity.id}}"></label>
+                            <input id="capacityName{{capacity.id}}" [(ngModel)]="capacity.name">
+                        </ng-template>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockCapacityEffects">
+                            {{capacity.effects}}
+                        </span>
+                        <ng-template #elseBlockCapacityEffects>
+                            <label for="capacityEffects{{capacity.id}}"></label>
+                            <input id="capacityEffects{{capacity.id}}" [(ngModel)]="capacity.effects">
+                        </ng-template>
+                    </td>
+                    <td>
+                        <span *ngIf="!editMode; else elseBlockCapacityDifficulty">
+                            {{capacity.difficulty}}
+                        </span>
+                        <ng-template #elseBlockCapacityDifficulty>
+                            <label for="capacityDifficulty{{capacity.id}}"></label>
+                            <input type="number" id="capacityDifficulty{{capacity.id}}" [(ngModel)]="capacity.difficulty">
+                        </ng-template>
+                    </td>
+                    <td *ngIf="editMode">
+                        <button class="btn btn-danger" (click)="onClickDeleteCapacity(capacity.id)">-</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -590,7 +648,89 @@
 
     <div class="container card">
         <h2>Aptitudes</h2>
-    
+       <div class="container">
+        
+            <div class="trees">
+                <img src="assets/abilities-tree/{{character.job.abilityTreeImg}}.png" width=400 class="tree tree--job"/>
+                <img src="assets/abilities-tree/common-abtree.png" width=250 class="tree tree--common"/>
+                <img src="assets/abilities-tree/{{character.race.abilityTreeImg}}.png" width=350 class="tree tree--race"/>
+            </div>
+        </div>
+
+        <h3 class=" table__abilities-job">Classe - {{character.job.name}}</h3>
+        <table class="table">
+            <thead >
+                <th></th>
+                <th>Aptitude</th>
+                <th>Effets</th>
+                <th *ngIf="editMode"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ability of character.abilitiesJob" 
+                [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
+                            'table-dark':ability.isUnlocked && !ability.isActivated}">
+                    <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
+                    <td class="ability__name">{{ability.content.name}}</td>
+                    <td>{{ability.content.effects}}</td>
+                    <td *ngIf="editMode && ability.isUnlocked && !ability.isActivated">
+                        <button class="btn btn-success" (click)="onClickActivateAbility(ability)">Activer</button>
+                    </td>
+                    <td *ngIf="editMode && ability.isActivated">
+                        <button class="btn btn-danger" (click)="onClickDeactivateAbility(ability)">Désactiver</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class=" table__abilities-common">Commun</h3>
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>Aptitude</th>
+                <th>Effets</th>
+                <th *ngIf="editMode"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ability of character.abilitiesCommon" 
+                [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
+                'table-dark':ability.isUnlocked && !ability.isActivated}">
+                    <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
+                    <td class="ability__name">{{ability.content.name}}</td>
+                    <td>{{ability.content.effects}}</td>
+                    <td *ngIf="editMode && ability.isUnlocked && !ability.isActivated">
+                        <button class="btn btn-success" (click)="onClickActivateAbility(ability)">Activer</button>
+                    </td>
+                    <td *ngIf="editMode && ability.isActivated">
+                        <button class="btn btn-danger" (click)="onClickDeactivateAbility(ability)">Désactiver</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="table__abilities-race">Race - {{character.race.name}}</h3>
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>Aptitude</th>
+                <th>Effets</th>
+                <th *ngIf="editMode"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ability of character.abilitiesRace" 
+                [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
+                            'table-dark':ability.isUnlocked && !ability.isActivated}">
+                    <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
+                    <td class="ability__name">{{ability.content.name}}</td>
+                    <td>{{ability.content.effects}}</td>
+                    <td *ngIf="editMode && ability.isUnlocked && !ability.isActivated">
+                        <button class="btn btn-success" (click)="onClickActivateAbility(ability)">Activer</button>
+                    </td>
+                    <td *ngIf="editMode && ability.isActivated">
+                        <button class="btn btn-danger" (click)="onClickDeactivateAbility(ability)">Désactiver</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     
     </div>
 

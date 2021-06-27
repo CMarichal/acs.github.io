@@ -90,8 +90,6 @@ class SkillEtiquette extends Skill{
 abstract class Category {
     pureValue: number=0;
     key: string;
-
-    public abstract getSkills(): Skill[];
 }
 
 class CategoryVigor extends Category {
@@ -101,9 +99,6 @@ class CategoryVigor extends Category {
     resistance: SkillResistance     = new SkillResistance();
     key = "VIG";
 
-    getSkills() {
-        return [this.athletics, this.intimidation, this.melee, this.resistance];
-    }
 }
 
 class CategoryDexterity extends Category {
@@ -112,10 +107,6 @@ class CategoryDexterity extends Category {
     throw: SkillThrow       = new SkillThrow();
     stealth: SkillStealth   = new SkillStealth();
     key="DEX";
-
-    getSkills() {
-        return [this.sneak, this.dodge, this.throw, this.stealth];
-    }
     
 }
 
@@ -126,16 +117,8 @@ class CategoryIntelligence extends Category {
     knowHow: SkillKnowHow           = new SkillKnowHow();
     key="INT";
 
-    knowledges: {[name: string]: Skill} = {};
-    knowHows: {[name: string]: Skill} = {};
-
-    getSkills() {
-        return [this.knowledge].concat(Object.values(this.knowledges))
-                                .concat(this.perception)
-                                .concat(this.preparation)
-                                .concat(this.knowHow)
-                                .concat(Object.values(this.knowHows));
-    }
+    knowledges: Skill[] = [];
+    knowHows: Skill[] = [];
 }
 
 
@@ -145,10 +128,6 @@ class CategoryCharisma extends Category {
     bravery: SkillBravery       = new SkillBravery();
     etiquette: SkillEtiquette   = new SkillEtiquette();
     key="CHM;"
-
-    getSkills() {
-        return [this.persuasion, this.leadership, this.bravery, this.etiquette];
-    }
 }
 
 export class Stats {

@@ -3,13 +3,8 @@ import { Job } from "./job";
 import { ItemManagement } from "./item";
 import { HealthStatus, HealthStatuses } from "./healthStatus";
 import { Stats } from "./stats";
-
-
-class Capacity {
-    name: string="";
-    effect: string="";
-    difficulty: number=0;
-}
+import { Capacity } from "./capacities";
+import { Ability, CharacterAbility } from "./abilities";
 
 export class Character {
     
@@ -37,6 +32,10 @@ export class Character {
 
     capacities: Capacity[] = [];
 
+    abilitiesCommon: CharacterAbility[] = [];
+    abilitiesJob: CharacterAbility[] = [];
+    abilitiesRace: CharacterAbility[] = [];
+
     constructor(
         name: string, 
         race: Race, 
@@ -46,6 +45,5 @@ export class Character {
         this.race = race;
         this.job = job;
     }
-        
-;
+
 }

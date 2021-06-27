@@ -115,3 +115,58 @@ h1.sheet-title
     border-radius: 0.1em;
     width: 3.5em;
 }
+
+.trees
+{
+    width: 10em;
+    height: 20em;
+}
+
+.tree.tree--job
+{
+    position: absolute;
+    left: 17.5%;
+}
+
+.tree.tree--common
+{
+    position: absolute;
+    left: 35%;
+    top:2.75%;
+}
+
+.tree.tree--race
+{
+    position: absolute;
+    left: 42.5%;
+    top:3%;
+}
+
+.table__abilities-job
+{
+    color:rgb(128, 172, 185);
+    text-shadow: 0px 1px lightgray;
+    
+}
+
+.table__abilities-common
+{
+    color:rgb(113, 187, 113);
+    text-shadow: 0px 1px lightgray;
+}
+
+.table__abilities-race
+{
+    color:rgb(219, 123, 85);
+    text-shadow: 0px 1px lightgray;
+}
+
+.ability-locked
+{
+    color: lightgray;
+}
+
+.ability__name
+{
+    font-weight: bold;
+}
