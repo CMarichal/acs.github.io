@@ -226,7 +226,7 @@ export namespace AbilitiesJob {
             modifiers: {"ATH":5,"DDG":5},
             embededCapacity: null,
             linkedAbilities: ["J2C"],
-            icon:"r-j1c"
+            icon:"rg-j1c"
         }
 
         export const ABILITY_J2C: Ability = {
@@ -236,7 +236,7 @@ export namespace AbilitiesJob {
             modifiers: {"PCP":10},
             embededCapacity: null,
             linkedAbilities: ["J1C", "J3C"],
-            icon:"r-j2c"
+            icon:"rg-j2c"
         }
 
         export const ABILITY_J3C: Ability = {
@@ -246,7 +246,7 @@ export namespace AbilitiesJob {
             modifiers: {"PRP":10},
             embededCapacity: null,
             linkedAbilities: ["J2C", "J4L"],
-            icon:"r-j3c"
+            icon:"rg-j3c"
         }
 
         export const ABILITY_J4L: Ability = {
@@ -256,7 +256,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_BURST_SHOOTING,
             linkedAbilities: ["J3C", "J4R"],
-            icon:"r-j4l"
+            icon:"rg-j4l"
         }
 
         export const ABILITY_J4R: Ability = {
@@ -266,7 +266,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: null,
             linkedAbilities: ["J4L", "J5R"],
-            icon:"r-j4r"
+            icon:"rg-j4r"
         }
 
         export const ABILITY_J5R: Ability = {
@@ -276,7 +276,7 @@ export namespace AbilitiesJob {
             modifiers: {},
             embededCapacity: CapacitiesCommons.CAPACITY_CUSTOM_AMMOS,
             linkedAbilities: ["J4R"],
-            icon:"r-j5r"
+            icon:"rg-j5r"
         }
     }
 
@@ -535,10 +535,10 @@ export namespace AbilitiesRace {
 
         export const ABILITY_R5R: Ability = {
             key: "R5R",
-            name: CapacitiesCommons.CAPACITY_BURNING_SOUL.name,
-            effects: CapacitiesCommons.CAPACITY_BURNING_SOUL.effects,
+            name: CapacitiesCommons.CAPACITY_RELEASING_BEAST_FORCE.name,
+            effects: CapacitiesCommons.CAPACITY_RELEASING_BEAST_FORCE.effects,
             modifiers: {},
-            embededCapacity: CapacitiesCommons.CAPACITY_BURNING_SOUL,
+            embededCapacity: CapacitiesCommons.CAPACITY_RELEASING_BEAST_FORCE,
             linkedAbilities: ["R4L","R3R"],
             icon:"d-r5r"
         }
