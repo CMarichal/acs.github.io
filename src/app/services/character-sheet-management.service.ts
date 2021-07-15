@@ -5,6 +5,7 @@ import { Race } from 'model/race';
 import { Job } from 'model/job';
 import { RulesService } from './rules.service';
 import { CharacterAbility } from 'model/abilities';
+import { FirebaseService } from './firebase.service';
 
 
 @Injectable({
@@ -15,10 +16,15 @@ export class CharacterSheetManagementService {
   characterSheets: Character[] = testCharacters;
 
   constructor(
-    private rulesService: RulesService
+    private rulesService: RulesService,
+    private firebaseService: FirebaseService
     ) { }
 
   getAllCharacterSheets() {
+
+    
+
+
     return this.characterSheets;
   }
 
@@ -43,6 +49,9 @@ export class CharacterSheetManagementService {
 
     this.characterSheets.push(newCharacter);
     this.saveCharacter(newCharacter);
+
+    this.firebaseService.create('character', newCharacter);
+
     return newCharacter;
   }
 
