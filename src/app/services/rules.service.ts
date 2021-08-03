@@ -5,6 +5,11 @@ import { Character } from 'model/character';
 import { Stats, SimpleStats } from 'model/stats';
 import { MaterialCommons } from 'data/materialsBDD';
 import { AbilitiesCommons, Ability, CharacterAbility } from 'model/abilities';
+import { FirebaseService } from './firebase.service';
+import { ItemManagement } from 'model/item';
+import { Observable } from 'rxjs';
+import { AngularFireList } from '@angular/fire/database';
+import { exception } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +21,9 @@ export class RulesService {
   materialList = MaterialCommons.MaterialList;
   abilitiesCommonsList = AbilitiesCommons.ABILITY_C_LIST;
 
-  constructor() { }
+  constructor(
+    private firebaseService: FirebaseService
+  ) { }
 
   getRacesList(): Race[]
   {
@@ -26,18 +33,27 @@ export class RulesService {
   {
     return this.jobsList;
   }
-  getMaterialsList()
-  {
-    return this.materialList;
-  }
+  // getMaterialsList()
+  // {
+  //   return this.materialList;
+  // }
   getAbilitiesCommonsList(): Ability[]
   {
     return this.abilitiesCommonsList;
   }
 
+  getMaterialsList() {
+    return this.materialList;
+  }
 
-  // get all the linked abilities on the ability graph
-  // is aware of the unidirectional problem
+
+  /** get all the linked abilities on the ability graph
+      is aware of the unidirectional problem
+   * 
+   * @param character 
+   * @param ability 
+   * @returns 
+   */
   private getAllLinkedAbilities(character:Character, ability: CharacterAbility): CharacterAbility[] {
     var totalAbilities = [character.abilitiesCommon, character.abilitiesJob, character.abilitiesRace];
 
@@ -64,6 +80,11 @@ export class RulesService {
     return linkedAbilities;
   }
 
+  /** Activate an ability and unlock linked ones
+   * 
+   * @param character 
+   * @param ability 
+   */
   activateAbility(character:Character, ability: CharacterAbility): void 
   {
     ability.isActivated = true;
@@ -74,6 +95,11 @@ export class RulesService {
     }
   }
 
+  /** Deactivate an ability an relock abilities that should be relocked
+   * 
+   * @param character 
+   * @param ability 
+   */
   deactivateAbility(character:Character, ability: CharacterAbility): void 
   {
     ability.isActivated = false;
@@ -96,14 +122,22 @@ export class RulesService {
     }
   }
   
+  /**
+   * Update modifiers for a character
+   * @param character 
+   */
   updateModifiers(character: Character) {
 
     // var equipementStats
-    
+
     // character.stats.vigor.athletics.modifier = character.healthStatus.malus + character.
   }
 
-
+  /** Apply changes on modifiers
+   * 
+   * @param statsCharacter 
+   * @param statsToApply 
+   */
   private applyModifiers(statsCharacter: Stats, statsToApply: SimpleStats) {
     for (let statKey in statsToApply) {
       switch(statKey) {

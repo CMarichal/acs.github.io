@@ -1,20 +1,35 @@
 import { Injectable } from '@angular/core';
-import firebase from 'firebase';
+import { AngularFireDatabase } from '@angular/fire/database';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  constructor() { }
 
-  db(table) {
-    return firebase.database().ref(table);
+  constructor(
+    private database : AngularFireDatabase
+  ) {
+    
+   }
+   
+  /**
+   * Return a reference to the database
+   */
+  get db() {
+    return this.database;
   }
-  create(table, data) {
-    this.db(table).push(data);
+
+  addOne(table: string, object: any)
+  {
+
   }
-  remove(segment) {
-    return firebase.database().ref(segment).remove();
+
+  add(table: string, list)
+  {
+
   }
+
+
 }

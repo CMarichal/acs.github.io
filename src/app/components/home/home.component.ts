@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireList } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { Character } from 'model/character';
+import { Observable } from 'rxjs';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
 
 @Component({
@@ -11,6 +13,8 @@ import { CharacterSheetManagementService } from '../../services/character-sheet-
 export class HomeComponent implements OnInit {
 
   uploadedFile: File;
+  characterSheetToLoad: Character;
+  availableCharacters$: Observable<Character[]>;
 
   constructor(
     private characterSheetManagementService: CharacterSheetManagementService,
@@ -18,12 +22,19 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.availableCharacters$ = this.characterSheetManagementService.getAllCharacterSheets();
   }
 
-  onChange(event) {
+  /**
+   * Upload local json file
+   */
+  onChangeUploadFile(event) {
     this.uploadedFile = event.target.files[0];
   }
 
+  /**
+   * Import uploaded file
+   */
   onClickImportButton() {
     if (this.uploadedFile.type !== "application/json") {
       alert("Wrong file type: " + this.uploadedFile.type); 
@@ -41,9 +52,20 @@ export class HomeComponent implements OnInit {
       }
   }
 
+  /**
+   * Create new character in database
+   */
   onClickCreateButton() {
     this.router.navigate(['create-character']);
   }
+
+  /**
+   * Load a character in database
+   */
+  onClickLoadButton() {
+    this.router.navigate(['character-sheet', this.characterSheetToLoad.id]);
+  }
+
 
 
 }

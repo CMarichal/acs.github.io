@@ -11,6 +11,11 @@ import { DisplayModifierPipe } from './pipes/display-modifier.pipe';
 import { CreateCharacterComponent } from './components/create-character/create-character.component';
 import { BeginWithPipe } from './pipes/begin-with.pipe';
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AngularFireFunctions, AngularFireFunctionsModule, REGION } from "@angular/fire/functions"
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +29,11 @@ import { BeginWithPipe } from './pipes/begin-with.pipe';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [ 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

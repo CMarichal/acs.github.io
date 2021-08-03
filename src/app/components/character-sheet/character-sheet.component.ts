@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from 'model/character';
 import { HealthStatuses } from 'model/healthStatus';
 import { CharacterSheetManagementService } from '../../services/character-sheet-management.service';
@@ -8,6 +8,10 @@ import { ItemManagement } from 'model/item';
 import { Capacity } from 'model/capacities';
 import { Ability, CharacterAbility } from 'model/abilities';
 import { Skill } from 'model/stats';
+import { Observable } from 'rxjs';
+import { Race, Races } from 'model/race';
+import { Job, Jobs } from 'model/job';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-character-sheet',
@@ -16,14 +20,17 @@ import { Skill } from 'model/stats';
 })
 export class CharacterSheetComponent implements OnInit {
 
-  character: Character; // character to display
+  character$: Observable<Character>; // character to display
+  character: Character = new Character("", Races.RACE_ARDENT_MAGES, Jobs.JOB_CAVALRY);
+  characterRace: Race = null;
+  characterJob: Job = null;
   characterVigorSkills: Skill[];
   characterDexteritySkills: Skill[];
   characterIntelligenceSkills: Skill[];
   characterCharismaSkills: Skill[];
   
-  materialList: ItemManagement.Material[];
-  abilitiesCommonsList: Ability[];
+  materialList?: ItemManagement.Material[];
+  
 
   healthStatusList = HealthStatuses.HealthStatusesList;
   
@@ -32,46 +39,72 @@ export class CharacterSheetComponent implements OnInit {
   constructor(
     private characterSheetManagementService: CharacterSheetManagementService,
     private rulesService: RulesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {   }
 
   ngOnInit(): void {
     var characterId = this.route.snapshot.params.id;
 
-    this.character = this.characterSheetManagementService.getCharacterSheet(characterId);
-    this.loadSkillsCharacter();
-
+    this.character$ = this.characterSheetManagementService.getCharacterSheet(characterId);
+    this.character$.pipe(first()).subscribe(
+      data => {
+        this.loadCharacter(data);
+        this.character = data;
+      });
     this.materialList = this.rulesService.getMaterialsList();
-    this.abilitiesCommonsList = this.rulesService.getAbilitiesCommonsList();
+    //this.abilitiesCommonsList = this.rulesService.getAbilitiesCommonsList();
   }
 
-  private loadSkillsCharacter(): void {
+  /**
+   * Provides the character's skills in the right order
+   * @param character 
+   */
+  private reorderSkillsCharacter(character): void {
     this.characterVigorSkills = [
-      this.character.stats.vigor.athletics,
-      this.character.stats.vigor.intimidation,
-      this.character.stats.vigor.melee,
-      this.character.stats.vigor.resistance
+      character.stats.vigor.athletics,
+      character.stats.vigor.intimidation,
+      character.stats.vigor.melee,
+      character.stats.vigor.resistance
     ];
     this.characterDexteritySkills = [
-      this.character.stats.dexterity.sneak,
-      this.character.stats.dexterity.dodge,
-      this.character.stats.dexterity.throw,
-      this.character.stats.dexterity.stealth
+      character.stats.dexterity.sneak,
+      character.stats.dexterity.dodge,
+      character.stats.dexterity.throw,
+      character.stats.dexterity.stealth
     ];
+
     this.characterIntelligenceSkills = [
-      this.character.stats.intelligence.knowledge]
-      .concat(this.character.stats.intelligence.knowledges)
-      .concat([
-       this.character.stats.intelligence.perception,
-       this.character.stats.intelligence.preparation,
-       this.character.stats.intelligence.knowHow])
-      .concat(this.character.stats.intelligence.knowHows);
+      character.stats.intelligence.knowledge];
+    if (character.stats.intelligence?.knowledges != undefined) {
+      this.characterIntelligenceSkills =
+        this.characterIntelligenceSkills.concat(character.stats.intelligence?.knowledges);
+    }
+    this.characterIntelligenceSkills = this.characterIntelligenceSkills.concat([
+       character.stats.intelligence.perception,
+       character.stats.intelligence.preparation,
+       character.stats.intelligence.knowHow]);
+    if (character.stats.intelligence?.knowHows != undefined) {
+      this.characterIntelligenceSkills =
+        this.characterIntelligenceSkills.concat(character.stats.intelligence?.knowHows);
+    }
+
     this.characterCharismaSkills = [
-      this.character.stats.charisma.persuasion,
-      this.character.stats.charisma.leadership,
-      this.character.stats.charisma.bravery,
-      this.character.stats.charisma.etiquette
+      character.stats.charisma.persuasion,
+      character.stats.charisma.leadership,
+      character.stats.charisma.bravery,
+      character.stats.charisma.etiquette
     ];
+  }
+
+  /**
+   * Prepare the component to display the character
+   * @param character 
+   */
+  private loadCharacter(character): void {
+    this.reorderSkillsCharacter(character);
+    this.characterRace = this.rulesService.getRacesList().find(race=> character.race == race.name);
+    this.characterJob = this.rulesService.getJobsList().find(job=> character.job == job.name);
   }
 
   onClickEditButton()  {
@@ -83,6 +116,8 @@ export class CharacterSheetComponent implements OnInit {
     {
       this.characterSheetManagementService.saveCharacter(this.character);
       this.editMode = false;
+      window.location.reload();
+      //this.character$ = this.characterSheetManagementService.getCharacterSheet(this.character.id);
     }
     
   }
@@ -107,7 +142,6 @@ export class CharacterSheetComponent implements OnInit {
     newKnowledge.key = "KNL-CUSTOM-"+this.character.stats.intelligence.knowledges.length;
     this.character.stats.intelligence.knowledges.push(newKnowledge);
     this.characterIntelligenceSkills.push(newKnowledge);
-    this.loadSkillsCharacter();
   }
 
   onClickAddKnowHow() {
@@ -116,19 +150,16 @@ export class CharacterSheetComponent implements OnInit {
     newKnowHow.name = "";
     newKnowHow.key = "KNH-CUSTOM-"+this.character.stats.intelligence.knowHows.length;
     this.character.stats.intelligence.knowHows.push(newKnowHow);
-    this.loadSkillsCharacter();
   }
 
   onClickDeleteKnowledge(knowledgeKey: string) {
     var id = this.character.stats.intelligence.knowledges.findIndex(skill => knowledgeKey == skill.key);
     this.character.stats.intelligence.knowledges.splice(id, 1);
-    this.loadSkillsCharacter();
   }
 
   onClickDeleteKnowHow(knowHowKey: string) {
     var id = this.character.stats.intelligence.knowHows.findIndex(skill => knowHowKey == skill.key);
     this.character.stats.intelligence.knowHows.splice(id, 1);
-    this.loadSkillsCharacter();
   }
 
 

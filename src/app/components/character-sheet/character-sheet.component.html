@@ -12,7 +12,7 @@
 
 
 
-    
+  
     <div class="container border">
         <h2>Informations</h2>
         <table>
@@ -28,7 +28,7 @@
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockName">
-                            {{character.name}}
+                            {{ (character$ | async)?.name}}
                         </span>
                         <ng-template #elseBlockName>
                             <label for="name"></label>
@@ -41,7 +41,7 @@
                         <span class="info info__race">Race </span>
                     </td>
                     <td>
-                        {{character.race.name}}
+                        {{(character$ | async)?.race.name}}
                     </td>
                 </tr>
             </tbody>
@@ -59,7 +59,7 @@
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockSubgroup">
-                            {{character.subgroup}}
+                            {{(character$ | async)?.subgroup}}
                         </span>
                         <ng-template #elseBlockSubgroup>
                             <label for="subgroup"></label>
@@ -73,7 +73,7 @@
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockArchetype">
-                            {{character.archetype}}
+                            {{(character$ | async)?.archetype}}
                         </span>
                         <ng-template #elseBlockArchetype>
                             <label for="archetype"></label>
@@ -87,7 +87,7 @@
                     </td>
                     <td>
                         <span *ngIf="!editMode; else elseBlockGoal">
-                            {{character.goal}}
+                            {{(character$ | async)?.goal}}
                         </span>
                         <ng-template #elseBlockGoal>
                             <label for="goal"></label>
@@ -115,7 +115,7 @@
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueVigor" >
                             <div class="hexagon">
-                                <span class="category category__pure-value">{{character.stats.vigor.pureValue}}</span>
+                                <span class="category category__pure-value">{{(character$ | async)?.stats.vigor.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueVigor>
@@ -166,7 +166,7 @@
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueDexterity" >
                             <div class="hexagon">
-                                <span class="category category__pure-value">{{character.stats.dexterity.pureValue}}</span>
+                                <span class="category category__pure-value">{{(character$ | async)?.stats.dexterity.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueDexterity>
@@ -217,7 +217,7 @@
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueIntelligence" >
                             <div class="hexagon">
-                                <span class="category category__pure-value">{{character.stats.intelligence.pureValue}}</span>
+                                <span class="category category__pure-value">{{(character$ | async)?.stats.intelligence.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueIntelligence>
@@ -295,7 +295,7 @@
                     <div class="float-right">
                         <div *ngIf="!editMode; else elseBlockPureValueCharisma" >
                             <div class="hexagon">
-                                <span class="category category__pure-value">{{character.stats.charisma.pureValue}}</span>
+                                <span class="category category__pure-value">{{(character$ | async)?.stats.charisma.pureValue}}</span>
                             </div>
                         </div>
                         <ng-template #elseBlockPureValueCharisma>
@@ -361,7 +361,7 @@
         <div class="row">
             <div class="col border">
                 <h3>Destinée</h3>
-                <input type="checkbox" [checked]="character.destinyPoint">
+                <input type="checkbox" [checked]="(character$ | async)?.destinyPoint">
             </div>
     
             <div class="col border">
@@ -427,7 +427,7 @@
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let weapon of character.weapons">
+                <tr *ngFor="let weapon of (character$ | async)?.weapons">
                     <td>
                         <input class="form-check-input" type="radio" name="healthRadioGroup" id="weaponEquipped+{{weapon.id}}" 
                         [value]="weapon.id" [checked]="weapon.equiped">   
@@ -490,7 +490,7 @@
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let armor of character.armor">
+                <tr *ngFor="let armor of (character$ | async)?.armor">
                     <td>
                         <input type="checkbox" [checked]="armor.equiped">
                     </td>
@@ -549,7 +549,7 @@
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let item of character.inventory">
+                <tr *ngFor="let item of (character$ | async)?.inventory">
                     <td>
                         <span *ngIf="!editMode; else elseBlockItemName">
                             {{item.name}}
@@ -598,7 +598,7 @@
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let capacity of character.capacities">
+                <tr *ngFor="let capacity of (character$ | async)?.capacities">
                     <td>
                         <span *ngIf="!editMode; else elseBlockCapacityName">
                             {{capacity.name}}
@@ -651,13 +651,13 @@
        <div class="container">
         
             <div class="trees">
-                <img src="assets/abilities-tree/{{character.job.abilityTreeImg}}.png" width=400 class="tree tree--job"/>
+                <img src="assets/abilities-tree/{{(character$ | async)?.job.abilityTreeImg}}.png" width=400 class="tree tree--job"/>
                 <img src="assets/abilities-tree/common-abtree.png" width=250 class="tree tree--common"/>
-                <img src="assets/abilities-tree/{{character.race.abilityTreeImg}}.png" width=350 class="tree tree--race"/>
+                <img src="assets/abilities-tree/{{(character$ | async)?.race.abilityTreeImg}}.png" width=350 class="tree tree--race"/>
             </div>
         </div>
 
-        <h3 class=" table__abilities-job">Classe - {{character.job.name}}</h3>
+        <h3 class=" table__abilities-job">Classe - {{(character$ | async)?.job.name}}</h3>
         <table class="table">
             <thead >
                 <th></th>
@@ -666,7 +666,7 @@
                 <th *ngIf="editMode"></th>
             </thead>
             <tbody>
-                <tr *ngFor="let ability of character.abilitiesJob" 
+                <tr *ngFor="let ability of (character$ | async)?.abilitiesJob" 
                 [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
                             'table-dark':ability.isUnlocked && !ability.isActivated}">
                     <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
@@ -691,7 +691,7 @@
                 <th *ngIf="editMode"></th>
             </thead>
             <tbody>
-                <tr *ngFor="let ability of character.abilitiesCommon" 
+                <tr *ngFor="let ability of (character$ | async)?.abilitiesCommon" 
                 [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
                 'table-dark':ability.isUnlocked && !ability.isActivated}">
                     <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>
@@ -707,7 +707,7 @@
             </tbody>
         </table>
 
-        <h3 class="table__abilities-race">Race - {{character.race.name}}</h3>
+        <h3 class="table__abilities-race">Race - {{(character$ | async)?.race.name}}</h3>
         <table class="table">
             <thead>
                 <th></th>
@@ -716,7 +716,7 @@
                 <th *ngIf="editMode"></th>
             </thead>
             <tbody>
-                <tr *ngFor="let ability of character.abilitiesRace" 
+                <tr *ngFor="let ability of (character$ | async)?.abilitiesRace" 
                 [ngClass]="{'bg-dark ability-locked':!ability.isUnlocked, 
                             'table-dark':ability.isUnlocked && !ability.isActivated}">
                     <td><img src="assets/abilities-icons/{{ability.content.icon}}.png" width="75"/></td>

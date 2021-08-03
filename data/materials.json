@@ -1,0 +1,32 @@
+{
+    "unknown":{
+        "name": "Inconnu",
+        "modifier": 0,
+        "icon": "u",
+        "heavy": false
+    },
+    "leather": {
+        "name":"Cuir",
+        "modifier": 0,
+        "icon": "u",
+        "heavy": false
+    },
+    "notInBase": {
+        "name":"Non répertorié",
+        "modifier": 0,
+        "icon": "u",
+        "heavy": false
+    },
+    "iron":{
+        "name":"Fer",
+        "modifier": 0,
+        "icon": "u",
+        "heavy": false
+    },
+    "steel":{
+        "name": "Inconnu",
+        "modifier": 0,
+        "icon": "u",
+        "heavy": false
+    }
+}
